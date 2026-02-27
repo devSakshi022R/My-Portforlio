@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, GraduationCap } from "lucide-react";
 
 const strengths = [
     "Performance optimization & SEO-friendly UI engineering",
@@ -46,13 +46,17 @@ export function About() {
                         </div>
 
                         {/* Education chip */}
-                        <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 glass border border-border rounded-2xl">
-                            <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                                B.Sc
+                        <div className="mt-8 inline-flex items-center gap-4 px-4 py-3 glass border border-border rounded-2xl hover:border-accent-blue/30 transition-all duration-300 group">
+                            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center text-white shadow-lg shadow-accent-blue/10 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
+                                <GraduationCap size={24} strokeWidth={2} />
                             </div>
-                            <div>
-                                <p className="text-sm font-bold text-foreground">Pranveer Singh Institute of Technology</p>
-                                <p className="text-xs text-muted-foreground">B.Sc. Computer Science · 2020–2024 · CGPA: 7.8</p>
+                            <div className="flex flex-col justify-center">
+                                <p className="text-sm font-bold text-foreground leading-tight">
+                                    Pranveer Singh Institute of Technology
+                                </p>
+                                <p className="text-xs text-muted-foreground mt-1 font-medium">
+                                    B.Tech. Computer Science · 2020–2024 · CGPA: 7.8
+                                </p>
                             </div>
                         </div>
                     </motion.div>

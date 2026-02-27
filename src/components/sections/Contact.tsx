@@ -107,7 +107,7 @@ export function Contact() {
                             </div>
                             <ArrowRight className="text-muted-foreground group-hover:translate-x-2 group-hover:text-foreground transition-all duration-300" />
                         </motion.a>
-
+                        {/* 
                         <motion.a
                             initial={{ opacity: 0, x: 24 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -129,7 +129,7 @@ export function Contact() {
                                 </div>
                             </div>
                             <ArrowRight className="text-muted-foreground group-hover:translate-x-2 group-hover:text-foreground transition-all duration-300" />
-                        </motion.a>
+                        </motion.a> */}
 
                         <motion.div
                             initial={{ opacity: 0, x: 24 }}
