@@ -46,8 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body
-        className="min-h-screen bg-background text-foreground antialiased transition-colors duration-300"
-        style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif" }}
+        className="min-h-screen bg-background text-foreground antialiased font-sans selection:bg-primary/30 selection:text-white"
       >
         <ThemeProvider
           attribute="data-theme"
@@ -55,7 +54,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          {children}
+          {/* Global Background Elements */}
+          <div className="fixed inset-0 grid-bg -z-10" />
+          <div className="fixed inset-0 bg-mesh opacity-20 -z-10" />
+
+          <div className="relative z-0">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

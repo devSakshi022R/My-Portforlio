@@ -1,130 +1,132 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Code2, Layout, Database, Terminal, Cpu, Globe, Zap, ShieldCheck } from "lucide-react";
 
 const skillCategories = [
     {
-        emoji: "⚛️",
-        title: "Frontend & Frameworks",
-        color: "from-violet-500/10 to-purple-500/5 border-violet-500/20",
-        headerColor: "text-violet-400",
-        skills: [
-            "React.js", "Next.js", "JavaScript (ES6+)", "TypeScript",
-            "HTML5", "CSS3", "Tailwind CSS", "ShadCN/UI",
-            "Bootstrap", "MUI", "Ant Design",
-        ],
+        icon: <Layout className="text-secondary" size={24} />,
+        title: "Interface",
+        skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "ShadCN/UI"],
     },
     {
-        emoji: "🔄",
-        title: "State Management & Forms",
-        color: "from-blue-500/10 to-cyan-500/5 border-blue-500/20",
-        headerColor: "text-blue-400",
-        skills: [
-            "Redux", "Zustand", "React Hook Form", "Zod",
-            "Custom React Hooks", "Context API",
-        ],
+        icon: <Cpu className="text-primary" size={24} />,
+        title: "Logic",
+        skills: ["Redux", "Zustand", "Context API", "React Hook Form", "Zod"],
     },
     {
-        emoji: "🌐",
-        title: "API & Architecture",
-        color: "from-cyan-500/10 to-teal-500/5 border-cyan-500/20",
-        headerColor: "text-cyan-400",
-        skills: [
-            "REST API Integration", "Authentication & CORS",
-            "Client-Side Rendering", "Performance Optimization",
-            "SEO Friendly UI", "WCAG Accessibility",
-        ],
+        icon: <Globe className="text-tertiary" size={24} />,
+        title: "Platform",
+        skills: ["REST API", "SEO", "Performance", "WCAG", "Auth"],
     },
     {
-        emoji: "🛠️",
-        title: "Tools & Build",
-        color: "from-orange-500/10 to-yellow-500/5 border-orange-500/20",
-        headerColor: "text-orange-400",
-        skills: [
-            "Git", "GitHub", "NPM", "Yarn", "Storybook",
-            "VS Code", "Chrome DevTools", "GitHub Copilot", "Cursor AI",
-        ],
+        icon: <Terminal className="text-foreground" size={24} />,
+        title: "Workflow",
+        skills: ["Git", "GitHub", "NPM", "Storybook", "VS Code"],
     },
-];
-
-const focuses = [
-    { icon: "🏗️", label: "Scalable Frontend Architecture" },
-    { icon: "⚡", label: "Performance Optimization" },
-    { icon: "🎨", label: "Clean & Reusable UI Systems" },
-    { icon: "♿", label: "Accessibility & SEO" },
-    { icon: "🚀", label: "Production-Grade Code Quality" },
 ];
 
 export function Skills() {
     return (
-        <section id="skills" className="py-24 sm:py-32 relative overflow-hidden" aria-label="Skills section">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] glow-blue opacity-10 rounded-full pointer-events-none" />
-
+        <section id="skills" className="py-32 relative" aria-label="Skills section">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-purple/10 border border-accent-purple/20 text-accent-purple-light text-xs font-bold uppercase tracking-wider mb-6">
-                        Technical Stack
-                    </div>
-                    <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">What I Work With</h2>
-                    <p className="text-muted-foreground max-w-xl mx-auto">
-                        A curated toolkit built through real-world production experience.
-                    </p>
-                </div>
-
-                {/* Skill categories */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-                    {skillCategories.map((category, index) => (
+                <div className="flex flex-col md:flex-row gap-12 items-start">
+                    {/* Left Sticky Header */}
+                    <div className="md:sticky md:top-32 w-full md:w-1/3">
                         <motion.div
-                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="text-xs font-black uppercase tracking-[0.4em] text-primary mb-6"
+                        >
+                            Capabilities
+                        </motion.div>
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className={`glass border bg-gradient-to-br ${category.color} rounded-3xl p-6`}
+                            transition={{ delay: 0.1 }}
+                            className="text-5xl font-black tracking-tighter uppercase mb-6 leading-[0.9]"
                         >
-                            <div className="text-2xl mb-3">{category.emoji}</div>
-                            <h3 className={`font-black text-sm uppercase tracking-wider mb-5 ${category.headerColor}`}>
-                                {category.title}
-                            </h3>
-                            <div className="flex flex-wrap gap-2">
-                                {category.skills.map((skill, i) => (
-                                    <span
-                                        key={i}
-                                        className="skill-badge text-xs font-semibold px-3 py-1.5 rounded-lg bg-background/50 border border-border text-foreground/80 cursor-default"
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                            Technical <br />
+                            <span className="text-muted-foreground">Ecosystem</span>
+                        </motion.h2>
+                        <p className="text-muted-foreground font-medium leading-relaxed max-w-sm">
+                            A specialized toolkit tailored for high-performance frontend engineering and scalable architecture.
+                        </p>
+                    </div>
+
+                    {/* Right Scrollable Content */}
+                    <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {skillCategories.map((category, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="glass-card rounded-[2rem] p-8"
+                            >
+                                <div className="mb-6 p-4 bg-muted/50 rounded-2xl w-fit">
+                                    {category.icon}
+                                </div>
+                                <h3 className="text-xl font-black uppercase tracking-widest mb-6">
+                                    {category.title}
+                                </h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {category.skills.map((skill, i) => (
+                                        <span
+                                            key={i}
+                                            className="px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest bg-background border border-border group-hover:border-primary transition-colors"
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Focus areas */}
+                {/* Performance Banner */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="glass border border-border rounded-3xl p-8 sm:p-10"
+                    className="mt-12 glass flex flex-wrap items-center justify-between gap-8 p-10 rounded-[3rem] border border-primary/10"
                 >
-                    <h3 className="text-center text-sm font-black uppercase tracking-widest text-muted-foreground mb-8">
-                        Core Focus Areas
-                    </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                        {focuses.map((f, i) => (
-                            <div
-                                key={i}
-                                className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl hover:bg-muted/50 transition-colors group"
-                            >
-                                <span className="text-3xl group-hover:scale-110 transition-transform">{f.icon}</span>
-                                <span className="text-xs font-semibold text-muted-foreground leading-snug">{f.label}</span>
-                            </div>
-                        ))}
+                    <div className="flex items-center gap-4">
+                        <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                            <Zap size={24} />
+                        </div>
+                        <div>
+                            <p className="font-black uppercase tracking-widest text-sm italic">Ultra Fast</p>
+                            <p className="text-xs text-muted-foreground font-bold">Optimized for LCP, CLS & FCP</p>
+                        </div>
+                    </div>
+                    <div className="hidden md:block w-px h-12 bg-border" />
+                    <div className="flex items-center gap-4">
+                        <div className="h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                            <ShieldCheck size={24} />
+                        </div>
+                        <div>
+                            <p className="font-black uppercase tracking-widest text-sm italic">SEO Grade A</p>
+                            <p className="text-xs text-muted-foreground font-bold">Semantic HTML & WCAG Compliant</p>
+                        </div>
+                    </div>
+                    <div className="hidden md:block w-px h-12 bg-border" />
+                    <div className="flex items-center gap-4">
+                        <div className="h-12 w-12 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+                            <Globe size={24} />
+                        </div>
+                        <div>
+                            <p className="font-black uppercase tracking-widest text-sm italic">Global Ready</p>
+                            <p className="text-xs text-muted-foreground font-bold">Responsive across all viewports</p>
+                        </div>
                     </div>
                 </motion.div>
             </div>
         </section>
     );
 }
+

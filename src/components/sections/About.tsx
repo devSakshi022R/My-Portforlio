@@ -1,95 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, GraduationCap } from "lucide-react";
+import { CheckCircle2, GraduationCap, MapPin, Sparkles } from "lucide-react";
 
 const strengths = [
-    "Performance optimization & SEO-friendly UI engineering",
-    "State management mastery with Redux & Zustand",
-    "REST API integration with auth & authorization workflows",
-    "Building scalable, centralized UI component libraries",
-    "WCAG Accessibility and cross-browser compatibility",
-    "Data-driven dashboards with advanced chart visualizations",
+    "Performance-First UI Engineering",
+    "Scalable Component Systems",
+    "Advanced State Orchestration",
+    "SEO & Accessibility Specialist",
+    "Data-Driven Dashboards",
+    "Full-Spectrum React Hooks",
 ];
 
 export function About() {
     return (
-        <section id="about" className="py-24 sm:py-32 relative overflow-hidden" aria-label="About section">
-            {/* Subtle glow */}
-            <div className="absolute -top-40 right-0 w-80 h-80 glow-blue opacity-30 rounded-full pointer-events-none" />
+        <section id="about" className="py-32 relative overflow-hidden" aria-label="About section">
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Left: Text */}
+                <div className="grid lg:grid-cols-2 gap-24 items-start">
+                    {/* Left Side: Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: -24 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-80px" }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-blue/10 border border-accent-blue/20 text-accent-blue-light text-xs font-bold uppercase tracking-wider mb-6">
-                            About Me
-                        </div>
-                        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-6 leading-tight">
-                            Crafting <span className="text-gradient">product-grade</span> experiences, one component at a time.
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-12"
+                        >
+                            <Sparkles size={12} />
+                            The Architect
+                        </motion.div>
+
+                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.85]">
+                            Design <br />
+                            <span className="text-muted-foreground">Driven by</span> <br />
+                            Performance
                         </h2>
-                        <div className="space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed">
+
+                        <div className="space-y-6 text-lg text-muted-foreground font-medium max-w-xl">
                             <p>
-                                I&apos;m a <span className="font-semibold text-foreground">Frontend Engineer with 1.6+ years</span> of experience building scalable, production-grade web applications using React.js and Next.js.
+                                I&apos;m a <span className="text-foreground font-bold">Frontend Engineer</span> with a passion for building
+                                high-performance, production-grade applications that don&apos;t just look good but scale
+                                flawlessly.
                             </p>
                             <p>
-                                Currently working at <span className="font-semibold text-foreground">1Lattice in Gurugram</span>, I focus on high-performance user interfaces, centralized design systems, and data-driven dashboards. I specialize in translating complex business requirements into <span className="font-semibold text-foreground">clean, maintainable, and reusable frontend architecture.</span>
-                            </p>
-                            <p>
-                                I believe great frontend engineering is not just about UI — it&apos;s about <span className="font-semibold text-foreground">architecture, scalability, and user experience.</span>
+                                Currently scaling interfaces at <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4">1Lattice</span>,
+                                where I bridge the gap between complex
+                                business logic and fluid user experiences.
                             </p>
                         </div>
 
-                        {/* Education chip */}
-                        <div className="mt-8 inline-flex items-center gap-4 px-4 py-3 glass border border-border rounded-2xl hover:border-accent-blue/30 transition-all duration-300 group">
-                            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-accent-purple to-accent-blue flex items-center justify-center text-white shadow-lg shadow-accent-blue/10 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
-                                <GraduationCap size={24} strokeWidth={2} />
+                        {/* Education card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="mt-16 p-8 glass-card rounded-[2.5rem] flex items-center gap-6 group border-border/50 max-w-md"
+                        >
+                            <div className="h-16 w-16 rounded-2xl bg-foreground text-background flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
+                                <GraduationCap size={32} />
                             </div>
-                            <div className="flex flex-col justify-center">
-                                <p className="text-sm font-bold text-foreground leading-tight">
-                                    Pranveer Singh Institute of Technology
-                                </p>
-                                <p className="text-xs text-muted-foreground mt-1 font-medium">
-                                    B.Tech. Computer Science · 2020–2024 · CGPA: 7.8
-                                </p>
+                            <div>
+                                <p className="text-xs font-black uppercase tracking-widest text-primary mb-1">Academic background</p>
+                                <p className="text-sm font-black uppercase tracking-tight">PSIT Computer Science</p>
+                                <p className="text-xs text-muted-foreground font-bold mt-1 tracking-widest uppercase">Class of 2024</p>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
-                    {/* Right: Strengths card */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 24 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-80px" }}
-                        transition={{ duration: 0.6, delay: 0.15 }}
-                        className="glass border border-border rounded-3xl p-8 sm:p-10"
-                    >
-                        <h3 className="text-lg font-bold mb-8 text-foreground/70 uppercase tracking-wider text-sm">
-                            What I Specialize In
-                        </h3>
-                        <ul className="space-y-5">
+                    {/* Right Side: Strengths Grid */}
+                    <div className="relative">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                        >
                             {strengths.map((strength, i) => (
-                                <motion.li
+                                <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, x: 16 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.4, delay: 0.05 * i }}
-                                    className="flex items-start gap-3.5"
+                                    transition={{ delay: i * 0.1 }}
+                                    className="p-8 glass-card rounded-[2rem] border-primary/5 hover:border-primary/20 flex flex-col justify-between"
                                 >
-                                    <CheckCircle2 size={20} className="text-accent-purple-light flex-shrink-0 mt-0.5" />
-                                    <span className="text-foreground/85 font-medium text-sm sm:text-base">{strength}</span>
-                                </motion.li>
+                                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                                        <CheckCircle2 size={24} />
+                                    </div>
+                                    <h3 className="text-xs font-black uppercase tracking-widest leading-relaxed">
+                                        {strength}
+                                    </h3>
+                                </motion.div>
                             ))}
-                        </ul>
-                    </motion.div>
+                        </motion.div>
+
+                        {/* Decorative Background Blob */}
+                        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/10 blur-[100px] rounded-full -z-10 pointer-events-none" />
+                    </div>
                 </div>
             </div>
         </section>
     );
 }
+
