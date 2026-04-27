@@ -7,7 +7,7 @@ const experiences = [
     {
         role: "Frontend Developer",
         company: "1Lattice",
-        period: "Sept 2024 – Present",
+        period: "May 2024 – Present",
         location: "Gurugram, India",
         badge: "Active",
         description: [
@@ -21,7 +21,7 @@ const experiences = [
     {
         role: "Software Developer Intern",
         company: "1Lattice",
-        period: "July 2024 – Sept 2024",
+        period: "March 2024 – May 2024",
         location: "Gurugram, India",
         description: [
             "Engineered performant UI components for core products.",

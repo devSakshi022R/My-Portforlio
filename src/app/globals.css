@@ -17,31 +17,31 @@
     --accent-tertiary: #ec4899;
     /* Pink */
 
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(0, 0, 0, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(0, 0, 0, 0.06);
 
-    --glow-primary: rgba(99, 102, 241, 0.15);
-    --glow-secondary: rgba(6, 182, 212, 0.1);
+    --glow-primary: rgba(99, 102, 241, 0.18);
+    --glow-secondary: rgba(6, 182, 212, 0.12);
   }
 
   [data-theme='dark'] {
-    --background: #030712;
-    --foreground: #f8fafc;
-    --muted: #0f172a;
-    --muted-foreground: #94a3b8;
-    --border: #1e293b;
-    --card: #0b1120;
-    --card-foreground: #f8fafc;
+    --background: #04070f;
+    --foreground: #f1f5f9;
+    --muted: #0d1526;
+    --muted-foreground: #8896b3;
+    --border: #1a2540;
+    --card: #080f1e;
+    --card-foreground: #f1f5f9;
 
     --accent-primary: #818cf8;
     --accent-secondary: #22d3ee;
     --accent-tertiary: #f472b6;
 
-    --glass-bg: rgba(15, 23, 42, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(8, 15, 30, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.07);
 
-    --glow-primary: rgba(99, 102, 241, 0.1);
-    --glow-secondary: rgba(6, 182, 212, 0.05);
+    --glow-primary: rgba(129, 140, 248, 0.22);
+    --glow-secondary: rgba(34, 211, 238, 0.14);
   }
 }
 
@@ -87,31 +87,51 @@
 @layer utilities {
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
   }
 
   .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px -20px var(--glow-primary);
+    box-shadow:
+      0 24px 48px -12px var(--glow-primary),
+      0 0 0 1px rgba(129, 140, 248, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   .text-glow {
-    text-shadow: 0 0 20px var(--glow-primary);
+    text-shadow: 0 0 30px var(--glow-primary), 0 0 60px var(--glow-secondary);
   }
 
+  /* Animated flowing gradient text */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-tertiary;
+    background: linear-gradient(
+      135deg,
+      var(--accent-primary) 0%,
+      var(--accent-secondary) 45%,
+      var(--accent-tertiary) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
+    100% { background-position: 0% center; }
   }
 
   .bg-mesh {
@@ -127,22 +147,60 @@
   }
 
   @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-18px); }
   }
 
+  /* Shimmer sweep */
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+
+  /* Dot grid overlay that fades to edges */
   .grid-bg {
-    background-size: 50px 50px;
+    background-size: 48px 48px;
     background-image:
       linear-gradient(to right, var(--border) 1px, transparent 1px),
       linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-    mask-image: radial-gradient(circle, black, transparent 80%);
+    mask-image: radial-gradient(ellipse 80% 65% at 50% 40%, black 20%, transparent 100%);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Outer glow on buttons */
+  .btn-glow {
+    position: relative;
+  }
+  .btn-glow::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(12px);
+  }
+  .btn-glow:hover::after {
+    opacity: 0.6;
   }
 }

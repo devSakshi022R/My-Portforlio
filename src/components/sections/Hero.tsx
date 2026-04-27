@@ -25,27 +25,27 @@ export function Hero() {
         <section
             ref={containerRef}
             id="hero"
-            className="relative min-h-[110vh] flex items-center justify-center overflow-hidden pt-20 bg-mesh"
+            className="relative min-h-[110vh] flex items-center justify-center overflow-hidden pt-20"
             aria-label="Hero section"
         >
-            <div className="absolute inset-0 grid-bg opacity-30" />
+            {/* Fine grid overlay */}
+            <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
-            {/* Animated Background Elements */}
+            {/* Soft glow orbs — blur-only, no solid shapes */}
+            <div className="absolute top-[-10%] left-[10%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
+            <div className="absolute bottom-[-5%] right-[5%] w-[450px] h-[450px] rounded-full bg-secondary/10 blur-[130px] pointer-events-none" />
+            <div className="absolute top-[40%] left-[55%] w-[300px] h-[300px] rounded-full bg-tertiary/8 blur-[120px] pointer-events-none" />
+
+            {/* Animated ring accent */}
             <motion.div
-                animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 90, 0],
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-primary/5 pointer-events-none hidden lg:block"
             />
             <motion.div
-                animate={{
-                    scale: [1.2, 1, 1.2],
-                    rotate: [90, 0, 90],
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-1/4 -left-20 w-[500px] h-[500px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-secondary/5 pointer-events-none hidden lg:block"
             />
 
             <motion.div
@@ -84,7 +84,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] uppercase"
+                            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] uppercase text-glow"
                         >
                             Engineering <br />
                             <span className="text-gradient inline-block mt-2">Digital Focus</span>
@@ -125,18 +125,18 @@ export function Hero() {
                     >
                         <a
                             href="#projects"
-                            className="group relative px-10 py-5 bg-foreground text-background font-black uppercase tracking-widest text-sm rounded-full overflow-hidden hover:scale-105 transition-transform"
+                            className="btn-glow group relative px-10 py-5 bg-foreground text-background font-black uppercase tracking-widest text-sm rounded-full overflow-hidden hover:scale-105 transition-transform"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
                             <span className="relative z-10 flex items-center gap-2">
-                                Explorer Case Studies
+                                Explore Case Studies
                                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </span>
                         </a>
 
                         <a
-                            href="/pdf/FrontendResume.pdf"
-                            className="px-8 py-5 glass-card rounded-full font-black uppercase tracking-widest text-sm flex items-center gap-3 hover:border-foreground/20"
+                            href="/pdf/s_resume.pdf"
+                            className="btn-glow px-8 py-5 glass-card rounded-full font-black uppercase tracking-widest text-sm flex items-center gap-3 hover:border-foreground/20"
                         >
                             <Download size={18} />
                             Resume

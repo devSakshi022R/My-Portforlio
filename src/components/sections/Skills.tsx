@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Code2, Layout, Database, Terminal, Cpu, Globe, Zap, ShieldCheck } from "lucide-react";
+import { Card3D } from "@/components/ui/Card3D";
 
 const skillCategories = [
     {
@@ -65,24 +66,27 @@ export function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="glass-card rounded-[2rem] p-8"
                             >
-                                <div className="mb-6 p-4 bg-muted/50 rounded-2xl w-fit">
-                                    {category.icon}
-                                </div>
-                                <h3 className="text-xl font-black uppercase tracking-widest mb-6">
-                                    {category.title}
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {category.skills.map((skill, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest bg-background border border-border group-hover:border-primary transition-colors"
-                                        >
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
+                                <Card3D className="h-full">
+                                    <div className="glass-card rounded-[2rem] p-8 h-full">
+                                        <div className="mb-6 p-4 bg-muted/50 rounded-2xl w-fit">
+                                            {category.icon}
+                                        </div>
+                                        <h3 className="text-xl font-black uppercase tracking-widest mb-6">
+                                            {category.title}
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {category.skills.map((skill, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest bg-background border border-border group-hover:border-primary transition-colors"
+                                                >
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </Card3D>
                             </motion.div>
                         ))}
                     </div>

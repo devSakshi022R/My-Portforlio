@@ -63,10 +63,14 @@ export function About() {
                             <div className="h-16 w-16 rounded-2xl bg-foreground text-background flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
                                 <GraduationCap size={32} />
                             </div>
-                            <div>
-                                <p className="text-xs font-black uppercase tracking-widest text-primary mb-1">Academic background</p>
-                                <p className="text-sm font-black uppercase tracking-tight">PSIT Computer Science</p>
-                                <p className="text-xs text-muted-foreground font-bold mt-1 tracking-widest uppercase">Class of 2024</p>
+                            <div className="flex-1">
+                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-2">Education</p>
+                                <h4 className="text-base font-black uppercase tracking-tight mb-1">B.Tech Computer Science</h4>
+                                <p className="text-xs font-medium text-muted-foreground mb-3">Pranveer Singh Institute of Technology</p>
+                                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
+                                    <span className="px-2 py-1 rounded-md bg-muted/50 border border-border text-muted-foreground">2020 — 2024</span>
+                                    <span className="px-2 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary">7.8 CGPA</span>
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>

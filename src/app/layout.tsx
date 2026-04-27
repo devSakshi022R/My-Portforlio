@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuroraBackground } from "@/components/canvas/AuroraBackground";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,8 +57,10 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           {/* Global Background Elements */}
-          <div className="fixed inset-0 grid-bg -z-10" />
-          <div className="fixed inset-0 bg-mesh opacity-20 -z-10" />
+          <AuroraBackground />
+          <div className="fixed inset-0 grid-bg opacity-25 -z-10 pointer-events-none" />
+          <CustomCursor />
+
 
           <div className="relative z-0">
             {children}

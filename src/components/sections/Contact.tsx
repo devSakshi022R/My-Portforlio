@@ -25,6 +25,13 @@ const contactItems = [
         href: "https://linkedin.com/in/sakshi-singh-frontend",
         color: "text-tertiary",
     },
+    {
+        icon: Github,
+        label: "GitHub Profile",
+        value: "devSakshi022R",
+        href: "https://github.com/devSakshi022R",
+        color: "text-foreground",
+    },
 ];
 
 export function Contact() {
@@ -107,10 +114,13 @@ export function Footer() {
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-10">
-                        {["About", "Projects", "Skills", "LinkedIn"].map((link) => (
+                        {["About", "Projects", "Skills", "LinkedIn", "GitHub"].map((link) => (
                             <a
                                 key={link}
-                                href={link === "LinkedIn" ? "https://linkedin.com/in/sakshi-singh-frontend" : `#${link.toLowerCase()}`}
+                                href={
+                                    link === "LinkedIn" ? "https://linkedin.com/in/sakshi-singh-frontend" :
+                                    link === "GitHub" ? "https://github.com/devSakshi022R" : `#${link.toLowerCase()}`
+                                }
                                 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors"
                             >
                                 {link}
