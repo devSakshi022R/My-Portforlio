@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { Scene3D } from "@/components/canvas/Scene3D";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,16 +48,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body
-        className="min-h-screen bg-background text-foreground antialiased transition-colors duration-300"
-        style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif" }}
+        className="min-h-screen bg-background text-foreground antialiased font-sans selection:bg-primary/30 selection:text-white"
       >
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
-          enableSystem
+          forcedTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange={false}
         >
-          {children}
+          {/* Global Background Elements */}
+          <Scene3D />
+          <div className="fixed inset-0 grid-bg opacity-25 -z-10 pointer-events-none" />
+          <CustomCursor />
+
+
+          <div className="relative z-0">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

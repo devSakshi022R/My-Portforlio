@@ -1,113 +1,176 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Download, Sparkles, MapPin } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Download, Sparkles, Zap, Globe } from "lucide-react";
+import { useRef } from "react";
 
 const stats = [
-    { value: "1.6+", label: "Years Experience" },
-    { value: "60%", label: "Dev Efficiency Gained" },
-    { value: "4+", label: "Prod Apps Shipped" },
+    { value: "2+", label: "Years Exp" },
+    { value: "4+", label: "Prod Apps" },
     { value: "10+", label: "Tech Stack" },
 ];
 
 export function Hero() {
+    const containerRef = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"],
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+
     return (
         <section
+            ref={containerRef}
             id="hero"
-            className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+            className="relative min-h-[110vh] flex items-center justify-center overflow-hidden pt-20"
             aria-label="Hero section"
         >
-            {/* Background grid */}
-            <div className="absolute inset-0 grid-pattern opacity-40" />
+            {/* Fine grid overlay */}
+            <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
-            {/* Glow blobs */}
-            <div className="absolute top-1/4 -right-32 w-[550px] h-[550px] glow-purple opacity-60 rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 -left-32 w-[450px] h-[450px] glow-blue opacity-50 rounded-full pointer-events-none" />
+            {/* Soft glow orbs — blur-only, no solid shapes */}
+            <div className="absolute top-[-10%] left-[10%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
+            <div className="absolute bottom-[-5%] right-[5%] w-[450px] h-[450px] rounded-full bg-secondary/10 blur-[130px] pointer-events-none" />
+            <div className="absolute top-[40%] left-[55%] w-[300px] h-[300px] rounded-full bg-tertiary/8 blur-[120px] pointer-events-none" />
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
-                {/* Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent-purple/30 text-sm font-medium text-accent-purple-light mb-8"
-                >
-                    <Sparkles size={14} className="text-accent-purple-light" />
-                    <MapPin size={13} className="opacity-70" />
-                    <span>Frontend Engineer · Gurugram, India</span>
-                </motion.div>
+            {/* Animated ring accent */}
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-primary/5 pointer-events-none hidden lg:block"
+            />
+            <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-secondary/5 pointer-events-none hidden lg:block"
+            />
 
-                {/* Headline */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6 max-w-5xl mx-auto"
-                >
-                    Building{" "}
-                    <span className="text-gradient">scalable, high-performance</span>
-                    <br className="hidden sm:block" />
-                    {" "}web apps with React & Next.js
-                </motion.h1>
-
-                {/* Sub-headline */}
-                <motion.p
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-                >
-                    I design and develop{" "}
-                    <span className="font-semibold text-foreground">responsive, accessible, SEO-optimized</span>{" "}
-                    web applications with a strong focus on <span className="font-semibold text-foreground">performance, architecture, and reusable UI systems.</span>
-                </motion.p>
-
-                {/* CTAs */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
-                >
-                    <a
-                        id="hero-view-work"
-                        href="#projects"
-                        className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-blue text-white text-base font-bold rounded-2xl shadow-2xl shadow-accent-purple/40 hover:shadow-accent-purple/60 hover:scale-[1.03] transition-all duration-300"
+            <motion.div
+                style={{ y, opacity, scale }}
+                className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20"
+            >
+                <div className="flex flex-col items-center text-center">
+                    {/* Creative Badge */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, type: "spring" }}
+                        className="group relative inline-flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full glass border border-primary/20 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary mb-12 hover:border-primary/50 transition-colors cursor-default text-center"
                     >
-                        View My Work
-                        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
-                    <a
-                        id="hero-download-resume"
-                        href="/pdf/FrontendResume.pdf"
-                        className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 glass border border-border text-base font-bold rounded-2xl hover:border-accent-purple/50 hover:bg-accent-purple/5 transition-all duration-300"
-                    >
-                        <Download size={20} className="group-hover:-translate-y-0.5 transition-transform" />
-                        Download Resume
-                    </a>
-                </motion.div>
+                        <span className="relative flex h-2 w-2 flex-shrink-0">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        Available for new projects
+                        <div className="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-100 transition-transform blur-sm" />
+                    </motion.div>
 
-                {/* Stats bar */}
+                    {/* Main Title */}
+                    <div className="relative mb-10">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="absolute -top-12 -left-12 lg:-left-20 hidden md:flex flex-col items-center opacity-40 select-none animate-float"
+                        >
+                            <Globe size={40} className="text-secondary mb-2" />
+                            <div className="w-px h-20 bg-gradient-to-b from-secondary to-transparent" />
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[6rem] font-bold tracking-tight leading-[1] uppercase text-glow mb-6"
+                        >
+                            Sakshi Singh
+                        </motion.h1>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="max-w-3xl mx-auto mb-16 relative"
+                        >
+                            <p className="text-xs md:text-sm lg:text-base tracking-[0.5em] font-bold uppercase text-orange-400 drop-shadow-md">
+                                Frontend Developer
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="absolute -bottom-8 -right-12 hidden md:flex flex-col items-center opacity-40 select-none"
+                        >
+                            <div className="w-px h-20 bg-gradient-to-t from-tertiary to-transparent mb-2" />
+                            <Zap size={32} className="text-tertiary" />
+                        </motion.div>
+                    </div>
+
+
+
+                    {/* Actions */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="flex flex-wrap items-center justify-center gap-6"
+                    >
+                        <a
+                            href="#projects"
+                            className="btn-glow group relative px-10 py-5 bg-foreground text-background font-bold uppercase tracking-widest text-sm rounded-full overflow-hidden hover:scale-105 transition-transform"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <span className="relative z-10 flex items-center gap-2">
+                                Explore Case Studies
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            </span>
+                        </a>
+
+                        <a
+                            href="/pdf/s_resume.pdf"
+                            className="btn-glow px-8 py-5 glass-card rounded-full font-bold uppercase tracking-widest text-sm flex items-center gap-3 hover:border-foreground/20"
+                        >
+                            <Download size={18} />
+                            Resume
+                        </a>
+                    </motion.div>
+                </div>
+
+                {/* Bottom Stats Grid */}
                 <motion.div
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.45 }}
-                    className="grid grid-cols-2 sm:grid-cols-4 gap-px glass border border-border rounded-3xl overflow-hidden max-w-3xl mx-auto"
+                    transition={{ duration: 1, delay: 0.8 }}
+                    className="mt-32 mb-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto border-t border-border/50 pt-12"
                 >
                     {stats.map((stat, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center justify-center py-6 px-4 hover:bg-muted/30 transition-colors"
-                        >
-                            <span className="text-3xl font-black text-gradient">{stat.value}</span>
-                            <span className="text-xs font-medium text-muted-foreground mt-1 text-center">{stat.label}</span>
+                        <div key={index} className="flex flex-col items-center">
+                            <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-foreground mb-1">
+                                {stat.value}
+                            </span>
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                                {stat.label}
+                            </span>
                         </div>
                     ))}
                 </motion.div>
-            </div>
 
-            {/* Bottom fade */}
-            <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+                {/* Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    className="mt-16 hidden lg:flex flex-col items-center gap-4 opacity-50 w-full col-span-3 justify-center"
+                >
+                    <div className="w-px h-12 bg-gradient-to-b from-foreground to-transparent" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] rotate-180 [writing-mode:vertical-lr]">Scroll</span>
+                </motion.div>
+            </motion.div>
         </section>
     );
 }
