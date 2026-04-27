@@ -76,7 +76,7 @@ export function Skills() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
+                            className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
                         >
                             Technical <br />
                             <span className="text-muted-foreground">Ecosystem</span>
@@ -97,8 +97,8 @@ export function Skills() {
                                 transition={{ delay: index * 0.1 }}
                             >
                                 <Card3D className="h-full">
-                                    <div className="glass-card rounded-[2rem] p-8 h-full">
-                                        <div className="mb-6 p-4 bg-muted/50 rounded-2xl w-fit">
+                                    <div className="glass-card rounded-[2rem] p-6 md:p-8 h-full">
+                                        <div className="mb-6 p-3 md:p-4 bg-muted/50 rounded-2xl w-fit">
                                             {category.icon}
                                         </div>
                                         <h3 className="text-xl font-bold uppercase tracking-widest mb-6">
@@ -126,35 +126,35 @@ export function Skills() {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-12 glass flex flex-wrap items-center justify-between gap-8 p-10 rounded-[3rem] border border-primary/10"
+                    className="mt-12 glass flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-6 p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-primary/10"
                 >
                     <div className="flex items-center gap-4">
-                        <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                            <Zap size={24} />
+                        <div className="h-10 w-10 md:h-12 md:w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                            <Zap size={24} className="w-5 h-5 md:w-6 md:h-6" />
                         </div>
                         <div>
-                            <p className="font-bold uppercase tracking-widest text-sm italic">Ultra Fast</p>
-                            <p className="text-xs text-muted-foreground font-bold">Optimized for LCP, CLS & FCP</p>
+                            <p className="font-bold uppercase tracking-widest text-xs md:text-sm italic">Ultra Fast</p>
+                            <p className="text-[10px] md:text-xs text-muted-foreground font-bold">Optimized for LCP, CLS & FCP</p>
                         </div>
                     </div>
-                    <div className="hidden md:block w-px h-12 bg-border" />
+                    <div className="hidden sm:block w-px h-12 bg-border" />
                     <div className="flex items-center gap-4">
-                        <div className="h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                            <ShieldCheck size={24} />
+                        <div className="h-10 w-10 md:h-12 md:w-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                            <ShieldCheck size={24} className="w-5 h-5 md:w-6 md:h-6" />
                         </div>
                         <div>
-                            <p className="font-bold uppercase tracking-widest text-sm italic">SEO Grade A</p>
-                            <p className="text-xs text-muted-foreground font-bold">Semantic HTML & WCAG Compliant</p>
+                            <p className="font-bold uppercase tracking-widest text-xs md:text-sm italic">SEO Grade A</p>
+                            <p className="text-[10px] md:text-xs text-muted-foreground font-bold">Semantic HTML & WCAG Compliant</p>
                         </div>
                     </div>
-                    <div className="hidden md:block w-px h-12 bg-border" />
+                    <div className="hidden sm:block w-px h-12 bg-border" />
                     <div className="flex items-center gap-4">
-                        <div className="h-12 w-12 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary">
-                            <Globe size={24} />
+                        <div className="h-10 w-10 md:h-12 md:w-12 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary flex-shrink-0">
+                            <Globe size={24} className="w-5 h-5 md:w-6 md:h-6" />
                         </div>
                         <div>
-                            <p className="font-bold uppercase tracking-widest text-sm italic">Global Ready</p>
-                            <p className="text-xs text-muted-foreground font-bold">Responsive across all viewports</p>
+                            <p className="font-bold uppercase tracking-widest text-xs md:text-sm italic">Global Ready</p>
+                            <p className="text-[10px] md:text-xs text-muted-foreground font-bold">Responsive across all viewports</p>
                         </div>
                     </div>
                 </motion.div>

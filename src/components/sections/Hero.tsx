@@ -58,9 +58,9 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, type: "spring" }}
-                        className="group relative inline-flex items-center gap-2 px-6 py-2 rounded-full glass border border-primary/20 text-xs font-bold uppercase tracking-[0.2em] text-primary mb-12 hover:border-primary/50 transition-colors cursor-default"
+                        className="group relative inline-flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full glass border border-primary/20 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-primary mb-12 hover:border-primary/50 transition-colors cursor-default text-center"
                     >
-                        <span className="relative flex h-2 w-2">
+                        <span className="relative flex h-2 w-2 flex-shrink-0">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
@@ -84,7 +84,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[6rem] font-bold tracking-tight leading-[1] uppercase text-glow mb-6"
+                            className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[6rem] font-bold tracking-tight leading-[1] uppercase text-glow mb-6"
                         >
                             Sakshi Singh
                         </motion.h1>
@@ -146,11 +146,11 @@ export function Hero() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.8 }}
-                    className="mt-32 mb-16 grid grid-cols-3 gap-8 max-w-4xl mx-auto border-t border-border/50 pt-12"
+                    className="mt-32 mb-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto border-t border-border/50 pt-12"
                 >
                     {stats.map((stat, index) => (
                         <div key={index} className="flex flex-col items-center">
-                            <span className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground mb-1">
+                            <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-foreground mb-1">
                                 {stat.value}
                             </span>
                             <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground">

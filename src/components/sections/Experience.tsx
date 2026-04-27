@@ -52,7 +52,7 @@ export function Experience() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
+                            className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
                         >
                             Career <br />
                             <span className="text-muted-foreground">Journey</span>
@@ -74,16 +74,16 @@ export function Experience() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="relative pl-12"
+                                className="relative pl-8 md:pl-12"
                             >
                                 {/* Timeline Dot */}
                                 <div className="absolute left-[-5px] top-2 h-[11px] w-[11px] rounded-full bg-background border-2 border-primary shadow-[0_0_10px_var(--accent-primary)]" />
 
-                                <div className="glass-card rounded-[2.5rem] p-10 group">
-                                    <div className="flex flex-wrap items-start justify-between gap-6 mb-8">
+                                <div className="glass-card rounded-[2.5rem] p-6 md:p-10 group">
+                                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 md:gap-6 mb-8">
                                         <div>
                                             <div className="flex items-center gap-3 mb-2">
-                                                <h3 className="text-2xl font-bold uppercase tracking-tight">{exp.role}</h3>
+                                                <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight">{exp.role}</h3>
                                                 {exp.badge && (
                                                     <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20 animate-pulse">
                                                         {exp.badge}
@@ -101,7 +101,7 @@ export function Experience() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="px-6 py-3 rounded-2xl glass text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                        <div className="w-fit px-4 md:px-6 py-2 md:py-3 rounded-2xl glass text-[9px] md:text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
                                             <Calendar size={14} />
                                             {exp.period}
                                         </div>

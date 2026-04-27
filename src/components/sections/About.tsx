@@ -35,7 +35,7 @@ export function About() {
                             The Architect
                         </motion.div>
 
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
+                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
                             Design <br />
                             <span className="text-muted-foreground">Driven by</span> <br />
                             Performance
@@ -58,16 +58,16 @@ export function About() {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="mt-16 p-8 glass-card rounded-[2.5rem] flex items-center gap-6 group border-border/50 max-w-md"
+                            className="mt-12 md:mt-16 p-6 md:p-8 glass-card rounded-[2rem] md:rounded-[2.5rem] flex flex-col sm:flex-row items-start sm:items-center gap-6 group border-border/50 max-w-md"
                         >
-                            <div className="h-16 w-16 rounded-2xl bg-foreground text-background flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
+                            <div className="h-14 w-14 md:h-16 md:w-16 rounded-2xl bg-foreground text-background flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl flex-shrink-0">
                                 <GraduationCap size={32} />
                             </div>
                             <div className="flex-1">
                                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">Education</p>
                                 <h4 className="text-base font-bold uppercase tracking-tight mb-1">B.Tech Computer Science</h4>
                                 <p className="text-xs font-medium text-muted-foreground mb-3">Pranveer Singh Institute of Technology</p>
-                                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
+                                <div className="flex flex-wrap items-center gap-2 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">
                                     <span className="px-2 py-1 rounded-md bg-muted/50 border border-border text-muted-foreground">2020 — 2024</span>
                                     <span className="px-2 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary">7.8 CGPA</span>
                                 </div>
@@ -90,9 +90,9 @@ export function About() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="p-8 glass-card rounded-[2rem] border-primary/5 hover:border-primary/20 flex flex-col justify-between"
+                                    className="p-6 md:p-8 glass-card rounded-[2rem] border-primary/5 hover:border-primary/20 flex flex-col justify-between"
                                 >
-                                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 flex-shrink-0">
                                         <CheckCircle2 size={24} />
                                     </div>
                                     <h3 className="text-xs font-bold uppercase tracking-widest leading-relaxed">

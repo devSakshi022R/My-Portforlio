@@ -59,7 +59,7 @@ export function Projects() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85]"
+                            className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85]"
                         >
                             Selected <br />
                             <span className="text-muted-foreground">Projects</span>
@@ -86,16 +86,15 @@ export function Projects() {
                             transition={{ delay: index * 0.08 }}
                             className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-10 cursor-default hover:pl-4 transition-all duration-300"
                         >
-                            {/* Left: Index + Title */}
-                            <div className="flex items-start gap-8">
-                                <span className="text-xs font-black text-muted-foreground/50 pt-1 w-6 flex-shrink-0">
+                            <div className="flex items-start gap-6 md:gap-8">
+                                <span className="text-xs md:text-sm font-black text-muted-foreground/50 pt-1 w-6 flex-shrink-0">
                                     {project.index}
                                 </span>
                                 <div>
-                                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight group-hover:text-primary transition-colors duration-300 mb-1">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight group-hover:text-primary transition-colors duration-300 mb-1">
                                         {project.title}
                                     </h3>
-                                    <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+                                    <p className="text-[10px] md:text-xs font-black uppercase tracking-widest text-muted-foreground">
                                         {project.subtitle}
                                     </p>
                                 </div>

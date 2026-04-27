@@ -38,7 +38,7 @@ export function Contact() {
     return (
         <section id="contact" className="py-32 relative overflow-hidden" aria-label="Contact section">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="glass-card rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
+                <div className="glass-card rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 lg:p-20 relative overflow-hidden">
                     {/* Background Accents */}
                     <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -53,7 +53,7 @@ export function Contact() {
                             >
                                 Get in Touch
                             </motion.div>
-                            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
+                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
                                 Let&apos;s build <br />
                                 <span className="text-muted-foreground italic font-medium">remarkable</span> <br />
                                 Products
@@ -74,15 +74,15 @@ export function Contact() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="flex items-center justify-between p-8 glass rounded-3xl group hover:border-primary/30 transition-all hover:bg-muted/50"
+                                    className="flex items-center justify-between p-6 md:p-8 glass rounded-2xl md:rounded-3xl group hover:border-primary/30 transition-all hover:bg-muted/50"
                                 >
                                     <div className="flex items-center gap-6">
                                         <div className={`h-14 w-14 rounded-2xl bg-muted/50 flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform`}>
                                             <item.icon size={26} />
                                         </div>
-                                        <div>
-                                            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
-                                            <p className="text-lg font-bold uppercase tracking-tight">{item.value}</p>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
+                                            <p className="text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight truncate sm:break-normal">{item.value}</p>
                                         </div>
                                     </div>
                                     <ExternalLink size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
@@ -100,7 +100,7 @@ export function Footer() {
     return (
         <footer className="py-20 border-t border-border" aria-label="Footer">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-12">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
                     <div className="flex flex-col items-center md:items-start gap-4">
                         <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-xl bg-foreground text-background flex items-center justify-center font-bold text-xl">
