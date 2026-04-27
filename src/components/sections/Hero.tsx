@@ -93,10 +93,10 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
-                            className="max-w-3xl mx-auto mb-16 relative"
+                            className="max-w-xl mx-auto mb-16 relative"
                         >
-                            <p className="text-xs md:text-sm lg:text-base tracking-[0.5em] font-bold uppercase text-orange-400 drop-shadow-md">
-                                Frontend Developer
+                            <p className="text-[11px] md:text-sm lg:text-base tracking-[0.2em] font-bold uppercase text-orange-400 drop-shadow-md leading-relaxed">
+                                Frontend Developer <span className="text-muted-foreground/80">focused on performance, scalability & clean UI systems</span>
                             </p>
                         </motion.div>
 

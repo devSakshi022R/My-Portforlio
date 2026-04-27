@@ -74,7 +74,7 @@ export function Contact() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="flex items-center justify-between p-6 md:p-8 glass rounded-2xl md:rounded-3xl group hover:border-primary/30 transition-all hover:bg-muted/50"
+                                    className="flex items-center justify-between p-6 md:p-8 glass rounded-2xl md:rounded-3xl group hover:border-primary/30 transition-all hover:bg-muted/50 hover:-translate-y-1 hover:shadow-lg"
                                 >
                                     <div className="flex items-center gap-6">
                                         <div className={`h-14 w-14 rounded-2xl bg-muted/50 flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform`}>
