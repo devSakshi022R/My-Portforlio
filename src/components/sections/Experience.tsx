@@ -43,7 +43,7 @@ export function Experience() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="text-xs font-black uppercase tracking-[0.4em] text-primary mb-6"
+                            className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-6"
                         >
                             History
                         </motion.div>
@@ -52,7 +52,7 @@ export function Experience() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl font-black tracking-tighter uppercase mb-6 leading-[0.9]"
+                            className="text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
                         >
                             Career <br />
                             <span className="text-muted-foreground">Journey</span>
@@ -83,14 +83,14 @@ export function Experience() {
                                     <div className="flex flex-wrap items-start justify-between gap-6 mb-8">
                                         <div>
                                             <div className="flex items-center gap-3 mb-2">
-                                                <h3 className="text-2xl font-black uppercase tracking-tight">{exp.role}</h3>
+                                                <h3 className="text-2xl font-bold uppercase tracking-tight">{exp.role}</h3>
                                                 {exp.badge && (
-                                                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20 animate-pulse">
+                                                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20 animate-pulse">
                                                         {exp.badge}
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="flex items-center gap-4 text-xs font-black uppercase tracking-widest text-muted-foreground">
+                                            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                                                 <div className="flex items-center gap-1">
                                                     <Building2 size={12} />
                                                     {exp.company}
@@ -101,7 +101,7 @@ export function Experience() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="px-6 py-3 rounded-2xl glass text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                                        <div className="px-6 py-3 rounded-2xl glass text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
                                             <Calendar size={14} />
                                             {exp.period}
                                         </div>
@@ -118,7 +118,7 @@ export function Experience() {
 
                                     <div className="flex flex-wrap gap-2">
                                         {exp.tech.map((t, i) => (
-                                            <span key={i} className="px-4 py-1.5 rounded-xl bg-muted/50 text-[10px] font-black uppercase tracking-widest border border-border group-hover:border-primary/20 transition-colors">
+                                            <span key={i} className="px-4 py-1.5 rounded-xl bg-muted/50 text-[10px] font-bold uppercase tracking-widest border border-border group-hover:border-primary/20 transition-colors">
                                                 {t}
                                             </span>
                                         ))}

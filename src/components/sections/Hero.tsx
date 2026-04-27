@@ -5,7 +5,7 @@ import { ArrowRight, Download, Sparkles, Zap, Globe } from "lucide-react";
 import { useRef } from "react";
 
 const stats = [
-    { value: "1.6+", label: "Years Exp" },
+    { value: "2+", label: "Years Exp" },
     { value: "4+", label: "Prod Apps" },
     { value: "10+", label: "Tech Stack" },
 ];
@@ -58,7 +58,7 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, type: "spring" }}
-                        className="group relative inline-flex items-center gap-2 px-6 py-2 rounded-full glass border border-primary/20 text-xs font-black uppercase tracking-[0.2em] text-primary mb-12 hover:border-primary/50 transition-colors cursor-default"
+                        className="group relative inline-flex items-center gap-2 px-6 py-2 rounded-full glass border border-primary/20 text-xs font-bold uppercase tracking-[0.2em] text-primary mb-12 hover:border-primary/50 transition-colors cursor-default"
                     >
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -84,11 +84,21 @@ export function Hero() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] uppercase text-glow"
+                            className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[6rem] font-bold tracking-tight leading-[1] uppercase text-glow mb-6"
                         >
-                            Engineering <br />
-                            <span className="text-gradient inline-block mt-2">Digital Focus</span>
+                            Sakshi Singh
                         </motion.h1>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="max-w-3xl mx-auto mb-16 relative"
+                        >
+                            <p className="text-xs md:text-sm lg:text-base tracking-[0.5em] font-bold uppercase text-orange-400 drop-shadow-md">
+                                Frontend Developer
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
@@ -101,20 +111,7 @@ export function Hero() {
                         </motion.div>
                     </div>
 
-                    {/* Description */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                        className="max-w-2xl mx-auto mb-16 relative"
-                    >
-                        <p className="text-lg md:text-xl text-muted-foreground font-medium leading-relaxed">
-                            Crafting high-performance web experiences where
-                            <span className="text-foreground font-bold"> Art </span>
-                            meets
-                            <span className="text-foreground font-bold"> Precision Engineering.</span>
-                        </p>
-                    </motion.div>
+
 
                     {/* Actions */}
                     <motion.div
@@ -125,7 +122,7 @@ export function Hero() {
                     >
                         <a
                             href="#projects"
-                            className="btn-glow group relative px-10 py-5 bg-foreground text-background font-black uppercase tracking-widest text-sm rounded-full overflow-hidden hover:scale-105 transition-transform"
+                            className="btn-glow group relative px-10 py-5 bg-foreground text-background font-bold uppercase tracking-widest text-sm rounded-full overflow-hidden hover:scale-105 transition-transform"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
                             <span className="relative z-10 flex items-center gap-2">
@@ -136,7 +133,7 @@ export function Hero() {
 
                         <a
                             href="/pdf/s_resume.pdf"
-                            className="btn-glow px-8 py-5 glass-card rounded-full font-black uppercase tracking-widest text-sm flex items-center gap-3 hover:border-foreground/20"
+                            className="btn-glow px-8 py-5 glass-card rounded-full font-bold uppercase tracking-widest text-sm flex items-center gap-3 hover:border-foreground/20"
                         >
                             <Download size={18} />
                             Resume
@@ -149,30 +146,30 @@ export function Hero() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.8 }}
-                    className="mt-32 grid grid-cols-3 gap-8 max-w-4xl mx-auto border-t border-border/50 pt-12"
+                    className="mt-32 mb-16 grid grid-cols-3 gap-8 max-w-4xl mx-auto border-t border-border/50 pt-12"
                 >
                     {stats.map((stat, index) => (
                         <div key={index} className="flex flex-col items-center">
-                            <span className="text-4xl md:text-5xl font-black tracking-tighter text-foreground mb-1">
+                            <span className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground mb-1">
                                 {stat.value}
                             </span>
-                            <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-muted-foreground">
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground">
                                 {stat.label}
                             </span>
                         </div>
                     ))}
                 </motion.div>
-            </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4 opacity-50"
-            >
-                <div className="w-px h-12 bg-gradient-to-b from-foreground to-transparent" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] rotate-180 [writing-mode:vertical-lr]">Scroll</span>
+                {/* Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    className="mt-16 hidden lg:flex flex-col items-center gap-4 opacity-50 w-full col-span-3 justify-center"
+                >
+                    <div className="w-px h-12 bg-gradient-to-b from-foreground to-transparent" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] rotate-180 [writing-mode:vertical-lr]">Scroll</span>
+                </motion.div>
             </motion.div>
         </section>
     );

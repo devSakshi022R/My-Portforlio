@@ -49,11 +49,11 @@ export function Contact() {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="text-xs font-black uppercase tracking-[0.4em] text-primary mb-8"
+                                className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-8"
                             >
                                 Get in Touch
                             </motion.div>
-                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.85]">
+                            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
                                 Let&apos;s build <br />
                                 <span className="text-muted-foreground italic font-medium">remarkable</span> <br />
                                 Products
@@ -81,8 +81,8 @@ export function Contact() {
                                             <item.icon size={26} />
                                         </div>
                                         <div>
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
-                                            <p className="text-lg font-black uppercase tracking-tight">{item.value}</p>
+                                            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
+                                            <p className="text-lg font-bold uppercase tracking-tight">{item.value}</p>
                                         </div>
                                     </div>
                                     <ExternalLink size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
@@ -103,11 +103,11 @@ export function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="flex flex-col items-center md:items-start gap-4">
                         <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-foreground text-background flex items-center justify-center font-black text-xl">
+                            <div className="h-10 w-10 rounded-xl bg-foreground text-background flex items-center justify-center font-bold text-xl">
                                 S
                             </div>
                             <div>
-                                <p className="font-black uppercase tracking-tight leading-tight">Sakshi Singh</p>
+                                <p className="font-bold uppercase tracking-tight leading-tight">Sakshi Singh</p>
                                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Engineering Portfolio</p>
                             </div>
                         </div>
@@ -121,14 +121,14 @@ export function Footer() {
                                     link === "LinkedIn" ? "https://linkedin.com/in/sakshi-singh-frontend" :
                                     link === "GitHub" ? "https://github.com/devSakshi022R" : `#${link.toLowerCase()}`
                                 }
-                                className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors"
+                                className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors"
                             >
                                 {link}
                             </a>
                         ))}
                     </div>
 
-                    <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground text-center">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-center">
                         © {new Date().getFullYear()} / Design by Sakshi / Built with Precision
                     </p>
                 </div>

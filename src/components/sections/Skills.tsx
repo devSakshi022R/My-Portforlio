@@ -29,8 +29,37 @@ const skillCategories = [
 
 export function Skills() {
     return (
-        <section id="skills" className="py-32 relative" aria-label="Skills section">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="skills" className="py-32 relative overflow-hidden" aria-label="Skills section">
+            {/* Background Code Snippet */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.25] select-none -z-10 flex items-center justify-center overflow-hidden">
+                <div className="p-6 font-mono text-[14px] md:text-[16px] leading-relaxed w-full max-w-4xl flex items-start gap-4">
+                    <div className="flex flex-col text-right pr-4 opacity-50 text-gray-600">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                    </div>
+                    <div className="flex flex-col text-[#a6acb9]">
+                        <div><span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">html</span> <span className="text-[#27c93f]">lang</span><span className="text-[#22d3ee]">="en"</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">head</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">meta</span> <span className="text-[#27c93f]">name</span><span className="text-[#22d3ee]">="viewport"</span> <span className="text-[#27c93f]">content</span><span className="text-[#22d3ee]">="width=device-width, initial-scale=1.0"</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">title</span><span className="text-gray-600">&gt;</span>What do I do<span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">title</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;<span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">head</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">body</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">h1</span><span className="text-gray-600">&gt;</span>Things I do to get a perfect background image<span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">h1</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">p</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maybe I should stop tinkering with VSCode settings</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;just to take a screenshot of this dummy html code.</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">p</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;</span><span className="text-[#f472b6]">span</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oops, Almost forgot to say "Hello World!"!</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">span</span><span className="text-gray-600">&gt;</span></div>
+                        <div>&nbsp;&nbsp;<span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">body</span><span className="text-gray-600">&gt;</span></div>
+                        <div><span className="text-gray-600">&lt;/</span><span className="text-[#f472b6]">html</span><span className="text-gray-600">&gt;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col md:flex-row gap-12 items-start">
                     {/* Left Sticky Header */}
                     <div className="md:sticky md:top-32 w-full md:w-1/3">
@@ -38,7 +67,7 @@ export function Skills() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="text-xs font-black uppercase tracking-[0.4em] text-primary mb-6"
+                            className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-6"
                         >
                             Capabilities
                         </motion.div>
@@ -47,7 +76,7 @@ export function Skills() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl font-black tracking-tighter uppercase mb-6 leading-[0.9]"
+                            className="text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
                         >
                             Technical <br />
                             <span className="text-muted-foreground">Ecosystem</span>
@@ -72,14 +101,14 @@ export function Skills() {
                                         <div className="mb-6 p-4 bg-muted/50 rounded-2xl w-fit">
                                             {category.icon}
                                         </div>
-                                        <h3 className="text-xl font-black uppercase tracking-widest mb-6">
+                                        <h3 className="text-xl font-bold uppercase tracking-widest mb-6">
                                             {category.title}
                                         </h3>
                                         <div className="flex flex-wrap gap-2">
                                             {category.skills.map((skill, i) => (
                                                 <span
                                                     key={i}
-                                                    className="px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest bg-background border border-border group-hover:border-primary transition-colors"
+                                                    className="px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest bg-background border border-border group-hover:border-primary transition-colors"
                                                 >
                                                     {skill}
                                                 </span>
@@ -104,7 +133,7 @@ export function Skills() {
                             <Zap size={24} />
                         </div>
                         <div>
-                            <p className="font-black uppercase tracking-widest text-sm italic">Ultra Fast</p>
+                            <p className="font-bold uppercase tracking-widest text-sm italic">Ultra Fast</p>
                             <p className="text-xs text-muted-foreground font-bold">Optimized for LCP, CLS & FCP</p>
                         </div>
                     </div>
@@ -114,7 +143,7 @@ export function Skills() {
                             <ShieldCheck size={24} />
                         </div>
                         <div>
-                            <p className="font-black uppercase tracking-widest text-sm italic">SEO Grade A</p>
+                            <p className="font-bold uppercase tracking-widest text-sm italic">SEO Grade A</p>
                             <p className="text-xs text-muted-foreground font-bold">Semantic HTML & WCAG Compliant</p>
                         </div>
                     </div>
@@ -124,7 +153,7 @@ export function Skills() {
                             <Globe size={24} />
                         </div>
                         <div>
-                            <p className="font-black uppercase tracking-widest text-sm italic">Global Ready</p>
+                            <p className="font-bold uppercase tracking-widest text-sm italic">Global Ready</p>
                             <p className="text-xs text-muted-foreground font-bold">Responsive across all viewports</p>
                         </div>
                     </div>

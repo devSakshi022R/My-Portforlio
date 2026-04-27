@@ -29,13 +29,13 @@ export function About() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-12"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-12"
                         >
                             <Sparkles size={12} />
                             The Architect
                         </motion.div>
 
-                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.85]">
+                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
                             Design <br />
                             <span className="text-muted-foreground">Driven by</span> <br />
                             Performance
@@ -64,8 +64,8 @@ export function About() {
                                 <GraduationCap size={32} />
                             </div>
                             <div className="flex-1">
-                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-2">Education</p>
-                                <h4 className="text-base font-black uppercase tracking-tight mb-1">B.Tech Computer Science</h4>
+                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">Education</p>
+                                <h4 className="text-base font-bold uppercase tracking-tight mb-1">B.Tech Computer Science</h4>
                                 <p className="text-xs font-medium text-muted-foreground mb-3">Pranveer Singh Institute of Technology</p>
                                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
                                     <span className="px-2 py-1 rounded-md bg-muted/50 border border-border text-muted-foreground">2020 — 2024</span>
@@ -95,7 +95,7 @@ export function About() {
                                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
                                         <CheckCircle2 size={24} />
                                     </div>
-                                    <h3 className="text-xs font-black uppercase tracking-widest leading-relaxed">
+                                    <h3 className="text-xs font-bold uppercase tracking-widest leading-relaxed">
                                         {strength}
                                     </h3>
                                 </motion.div>

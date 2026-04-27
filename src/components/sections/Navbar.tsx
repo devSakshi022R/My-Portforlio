@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -16,7 +15,6 @@ const navLinks = [
 
 export function Navbar() {
     const [mounted, setMounted] = useState(false);
-    const { theme, setTheme } = useTheme();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -68,15 +66,6 @@ export function Navbar() {
 
                 {/* Right actions */}
                 <div className="flex items-center gap-3">
-                    <button
-                        id="theme-toggle"
-                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                        className="p-2.5 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground border border-border"
-                        aria-label="Toggle dark/light mode"
-                    >
-                        {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-                    </button>
-
                     <a
                         href="#contact"
                         className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-foreground text-background text-xs font-black uppercase tracking-widest rounded-full hover:opacity-90 transition-all hover:scale-105 shadow-xl shadow-black/10"

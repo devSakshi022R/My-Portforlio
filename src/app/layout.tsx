@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { AuroraBackground } from "@/components/canvas/AuroraBackground";
+import { Scene3D } from "@/components/canvas/Scene3D";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
@@ -53,11 +53,12 @@ export default function RootLayout({
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
-          enableSystem
+          forcedTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange={false}
         >
           {/* Global Background Elements */}
-          <AuroraBackground />
+          <Scene3D />
           <div className="fixed inset-0 grid-bg opacity-25 -z-10 pointer-events-none" />
           <CustomCursor />
 
