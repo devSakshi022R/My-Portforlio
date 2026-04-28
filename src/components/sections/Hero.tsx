@@ -132,7 +132,7 @@ export function Hero() {
                         </a>
 
                         <a
-                            href="/pdf/s_resume.pdf"
+                            href="/pdf/updated_Resume.pdf"
                             className="btn-glow px-8 py-5 glass-card rounded-full font-bold uppercase tracking-widest text-sm flex items-center gap-3 hover:border-foreground/20"
                         >
                             <Download size={18} />
