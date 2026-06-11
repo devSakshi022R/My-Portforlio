@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { Scene3D } from "@/components/canvas/Scene3D";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,62 +8,113 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-grotesk",
+});
+
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
+
+const SITE_URL = "https://sakshisingh.dev";
+
 export const metadata: Metadata = {
-  title: "Sakshi Singh | Frontend Engineer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Sakshi Singh — Frontend Engineer",
+    template: "%s · Sakshi Singh",
+  },
   description:
-    "Portfolio of Sakshi Singh — a Frontend Engineer with 1.6+ years of experience building scalable, high-performance web applications with React & Next.js. Based in Gurugram, India.",
+    "Sakshi Singh is a Frontend Engineer building fast, scalable web applications with React, Next.js & TypeScript. Based in Gurugram, India.",
   keywords: [
+    "Sakshi Singh",
     "Frontend Engineer",
     "React Developer",
     "Next.js Developer",
     "TypeScript",
-    "UI Component Library",
+    "Design Systems",
+    "Web Performance",
     "Gurugram",
     "India",
-    "Portfolio",
   ],
-  authors: [{ name: "Sakshi Singh", url: "mailto:sakshi915128@gmail.com" }],
+  authors: [{ name: "Sakshi Singh" }],
+  creator: "Sakshi Singh",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Sakshi Singh | Frontend Engineer",
-    description:
-      "Building scalable, high-performance web applications with React & Next.js.",
-    siteName: "Sakshi Singh Portfolio",
+    title: "Sakshi Singh — Frontend Engineer",
+    description: "Building fast, scalable web applications with React & Next.js.",
+    url: SITE_URL,
+    siteName: "Sakshi Singh",
     locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sakshi Singh — Frontend Engineer",
+    description: "Building fast, scalable web applications with React & Next.js.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f4f1e9",
+  width: "device-width",
+  initialScale: 1,
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sakshi Singh",
+  jobTitle: "Frontend Engineer",
+  url: SITE_URL,
+  email: "mailto:sakshi915128@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Gurugram",
+    addressCountry: "IN",
+  },
+  worksFor: { "@type": "Organization", name: "1Lattice" },
+  sameAs: [
+    "https://linkedin.com/in/sakshi-singh-frontend",
+    "https://github.com/devSakshi022R",
+  ],
+  knowsAbout: ["React", "Next.js", "TypeScript", "Design Systems", "Web Performance", "Accessibility"],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body
-        className="min-h-screen bg-background text-foreground antialiased font-sans selection:bg-primary/30 selection:text-white"
-      >
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
-          forcedTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange={false}
-        >
-          {/* Global Background Elements */}
-          <Scene3D />
-          <div className="fixed inset-0 grid-bg opacity-25 -z-10 pointer-events-none" />
-          <CustomCursor />
-
-
-          <div className="relative z-0">
-            {children}
-          </div>
-        </ThemeProvider>
+    <html
+      lang="en"
+      className={`${inter.variable} ${grotesk.variable} ${serif.variable} ${mono.variable}`}
+    >
+      <body className="min-h-screen bg-paper text-ink antialiased font-sans">
+        <a href="#main" className="skip-link">Skip to content</a>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
       </body>
     </html>
   );
