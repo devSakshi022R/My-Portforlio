@@ -1,32 +1,34 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Bricolage_Grotesque, Fraunces, Space_Mono } from "next/font/google";
 import "./globals.css";
+import { ParticleField } from "@/components/ui/ParticleField";
 
-const inter = Inter({
+const inter = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
 });
 
-const grotesk = Space_Grotesk({
+const grotesk = Bricolage_Grotesque({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-grotesk",
 });
 
-const serif = Instrument_Serif({
+const serif = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  weight: "400",
+  weight: ["400", "500"],
   style: ["normal", "italic"],
   variable: "--font-serif",
 });
 
-const mono = JetBrains_Mono({
+const mono = Space_Mono({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   variable: "--font-mono",
 });
 
@@ -75,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f1e9",
+  themeColor: "#0a0a0f",
   width: "device-width",
   initialScale: 1,
 };
@@ -110,6 +112,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-paper text-ink antialiased font-sans">
         <a href="#main" className="skip-link">Skip to content</a>
+        <ParticleField />
         {children}
         <script
           type="application/ld+json"
