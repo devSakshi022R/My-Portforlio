@@ -1,135 +1,87 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, Building2, Sparkles } from "lucide-react";
+import { Section, Reveal } from "@/components/ui/Section";
 
 const experiences = [
-    {
-        role: "Frontend Developer",
-        company: "1Lattice",
-        period: "April 2024 – Present",
-        location: "Gurugram, India",
-        badge: "Active",
-        description: [
-            "Architecting scalable frontend systems using 1Next.js & React.",
-            "Established a centralized UI Design System reducing dev-cycle by 60%.",
-            "Orchestrating complex state flows with Redux & custom hooks.",
-            "Pioneering high-performance, WCAG-compliant interface standards."
-        ],
-        tech: ["Next.js", "React", "TypeScript", "Redux", "Tailwind"],
-    },
-    {
-        role: "Software Developer Intern",
-        company: "1Lattice",
-        period: "Feb 2024 – April 2024",
-        location: "Gurugram, India",
-        description: [
-            "Engineered performant UI components for core products.",
-            "Optimized frontend bundle size and API integration layers.",
-            "Executed rapid prototyping in an Agile environment."
-        ],
-        tech: ["React.js", "Redux", "REST APIs"],
-    },
+  {
+    role: "Frontend Developer",
+    company: "1Lattice",
+    period: "Apr 2024 — Present",
+    location: "Gurugram, India",
+    current: true,
+    description: [
+      "Architecting scalable frontend systems with Next.js & React.",
+      "Built a centralised UI design system that reduced dev cycles by 60%.",
+      "Orchestrating complex state flows with Redux and custom hooks.",
+      "Set high-performance, WCAG-compliant interface standards.",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Redux", "Tailwind"],
+  },
+  {
+    role: "Software Developer Intern",
+    company: "1Lattice",
+    period: "Feb 2024 — Apr 2024",
+    location: "Gurugram, India",
+    current: false,
+    description: [
+      "Engineered performant UI components for core products.",
+      "Optimised frontend bundle size and API integration layers.",
+      "Delivered rapid prototypes in an Agile environment.",
+    ],
+    tech: ["React.js", "Redux", "REST APIs"],
+  },
 ];
 
 export function Experience() {
-    return (
-        <section id="experience" className="py-32 relative" aria-label="Experience section">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row gap-20">
-                    {/* Sticky Sidebar */}
-                    <div className="md:sticky md:top-32 h-fit w-full md:w-1/3">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-6"
-                        >
-                            History
-                        </motion.div>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6 leading-[0.9]"
-                        >
-                            Career <br />
-                            <span className="text-muted-foreground">Journey</span>
-                        </motion.h2>
-                        <p className="text-muted-foreground font-medium leading-relaxed">
-                            A track record of delivering enterprise-grade solutions and scalable architectures.
-                        </p>
-                    </div>
-
-                    {/* Timeline Content */}
-                    <div className="w-full md:w-2/3 space-y-12 relative">
-                        {/* Connecting Line */}
-                        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-transparent" />
-
-                        {experiences.map((exp, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="relative pl-8 md:pl-12"
-                            >
-                                {/* Timeline Dot */}
-                                <div className="absolute left-[-5px] top-2 h-[11px] w-[11px] rounded-full bg-background border-2 border-primary shadow-[0_0_10px_var(--accent-primary)]" />
-
-                                <div className="glass-card rounded-[2.5rem] p-6 md:p-10 group">
-                                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 md:gap-6 mb-8">
-                                        <div>
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight">{exp.role}</h3>
-                                                {exp.badge && (
-                                                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20 animate-pulse">
-                                                        {exp.badge}
-                                                    </span>
-                                                )}
-                                            </div>
-                                            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                                                <div className="flex items-center gap-1">
-                                                    <Building2 size={12} />
-                                                    {exp.company}
-                                                </div>
-                                                <div className="flex items-center gap-1">
-                                                    <MapPin size={12} />
-                                                    {exp.location}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="w-fit px-4 md:px-6 py-2 md:py-3 rounded-2xl glass text-[9px] md:text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
-                                            <Calendar size={14} />
-                                            {exp.period}
-                                        </div>
-                                    </div>
-
-                                    <ul className="space-y-4 mb-8">
-                                        {exp.description.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-4 text-muted-foreground font-medium leading-relaxed">
-                                                <div className="mt-2 h-1.5 w-1.5 rounded-full bg-primary/50 flex-shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {exp.tech.map((t, i) => (
-                                            <span key={i} className="px-4 py-1.5 rounded-xl bg-muted/50 text-[10px] font-bold uppercase tracking-widest border border-border group-hover:border-primary/20 transition-colors">
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+  return (
+    <Section id="experience" index="03" kicker="Experience" note="Career to date">
+      <div className="border-t border-line-strong">
+        {experiences.map((exp, i) => (
+          <Reveal key={i} delay={i * 0.05}>
+            <article className="group grid gap-6 border-b border-line py-10 md:grid-cols-[0.8fr_1.2fr] md:gap-12 md:py-14">
+              {/* Left: meta */}
+              <div>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-sm text-accent-deep">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {exp.current && (
+                    <span className="mono-label flex items-center gap-1.5 text-accent-deep">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Current
+                    </span>
+                  )}
                 </div>
-            </div>
-        </section>
-    );
-}
+                <h3 className="mt-4 font-display text-2xl font-medium tracking-tight text-ink sm:text-3xl">
+                  {exp.role}
+                </h3>
+                <p className="mt-2 text-ink-soft">
+                  {exp.company} — {exp.location}
+                </p>
+                <p className="mono-label mt-1">{exp.period}</p>
+              </div>
 
+              {/* Right: detail */}
+              <div>
+                <ul className="space-y-3">
+                  {exp.description.map((item, j) => (
+                    <li key={j} className="flex gap-3 text-ink-soft">
+                      <span className="mt-2.5 h-px w-4 shrink-0 bg-accent" />
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+                  {exp.tech.map((t) => (
+                    <span key={t} className="mono-label text-ink-soft">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}

@@ -1,129 +1,150 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Section, Reveal } from "@/components/ui/Section";
 
-const projects = [
-    {
-        index: "01",
-        title: "1Lattice Core",
-        subtitle: "Enterprise Company Portal",
-        description:
-            "Led frontend architecture for an enterprise-scale company portal with a centralized design system, reducing dev cycles by 60%.",
-        tags: ["Next.js", "TypeScript", "Redux", "ShadCN"],
-    },
-    {
-        index: "02",
-        title: "Agent Flux",
-        subtitle: "Workflow Automation System",
-        description:
-            "Complex state-driven app for managing multi-step workflows with real-time feedback and automated pipeline execution.",
-        tags: ["Redux", "Zod", "React Hook Form"],
-    },
-    {
-        index: "03",
-        title: "MediQ Analytics",
-        subtitle: "Data Visualization Dashboard",
-        description:
-            "Transforming raw medical datasets into interactive Sunburst and Marimekko charts for data-driven decision making.",
-        tags: ["D3.js", "Analytics", "Next.js"],
-    },
-    {
-        index: "04",
-        title: "Respondent Portal",
-        subtitle: "Secure Auth Platform",
-        description:
-            "High-traffic authentication and authorization flows for global research participants with CORS and session management.",
-        tags: ["Auth", "REST API", "React"],
-    },
+type Project = {
+  index: string;
+  title: string;
+  category: string;
+  year: string;
+  description: string;
+  metrics: { value: string; label: string }[];
+  tags: string[];
+  /** Optional outbound link (live site, GitHub, case study). */
+  href?: string;
+};
+
+const projects: Project[] = [
+  {
+    index: "01",
+    title: "1Lattice Core",
+    category: "Enterprise Portal",
+    year: "2024",
+    description:
+      "Led the frontend architecture for an enterprise-scale company portal, introducing a centralised design system that standardised UI and accelerated delivery across teams.",
+    metrics: [
+      { value: "60%", label: "Faster dev cycle" },
+      { value: "1", label: "Unified design system" },
+    ],
+    tags: ["Next.js", "TypeScript", "Redux", "ShadCN"],
+  },
+  {
+    index: "02",
+    title: "Agent Flux",
+    category: "Workflow Automation",
+    year: "2024",
+    description:
+      "A complex, state-driven app for managing multi-step workflows with real-time feedback and automated pipeline execution.",
+    metrics: [
+      { value: "Real-time", label: "Pipeline feedback" },
+      { value: "Multi-step", label: "Workflow engine" },
+    ],
+    tags: ["Redux", "Zod", "React Hook Form"],
+  },
+  {
+    index: "03",
+    title: "MediQ Analytics",
+    category: "Data Visualisation",
+    year: "2025",
+    description:
+      "Transformed raw medical datasets into interactive Sunburst and Marimekko charts, enabling data-driven clinical decisions.",
+    metrics: [
+      { value: "2+", label: "Chart systems" },
+      { value: "Interactive", label: "Drill-down views" },
+    ],
+    tags: ["D3.js", "Analytics", "Next.js"],
+  },
+  {
+    index: "04",
+    title: "Respondent Portal",
+    category: "Auth Platform",
+    year: "2025",
+    description:
+      "High-traffic authentication and authorisation flows for global research participants, with robust CORS and session management.",
+    metrics: [
+      { value: "Global", label: "Participant reach" },
+      { value: "Secure", label: "Session handling" },
+    ],
+    tags: ["Auth", "REST API", "React"],
+  },
 ];
 
-export function Projects() {
-    return (
-        <section id="projects" className="py-32 relative" aria-label="Projects section">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+function Row({ p }: { p: Project }) {
+  const external = p.href?.startsWith("http");
 
-                {/* Header */}
-                <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-                    <div>
-                        <motion.p
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="text-xs font-black uppercase tracking-[0.4em] text-primary mb-6"
-                        >
-                            Work Gallery
-                        </motion.p>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85]"
-                        >
-                            Selected <br />
-                            <span className="text-muted-foreground">Projects</span>
-                        </motion.h2>
-                    </div>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-muted-foreground max-w-xs font-medium leading-relaxed md:text-right"
-                    >
-                        Production-grade applications built at scale with real business impact.
-                    </motion.p>
-                </div>
+  return (
+    <article className="group relative border-b border-line transition-colors hover:bg-paper-2">
+      {p.href && (
+        <a
+          href={p.href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          className="absolute inset-0 z-10"
+          aria-label={`${p.title} — ${p.category}`}
+        />
+      )}
 
-                {/* Project List */}
-                <div className="divide-y divide-border">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.08 }}
-                            className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-10 cursor-default hover:pl-4 transition-all duration-300"
-                        >
-                            <div className="flex items-start gap-6 md:gap-8">
-                                <span className="text-xs md:text-sm font-black text-muted-foreground/50 pt-1 w-6 flex-shrink-0">
-                                    {project.index}
-                                </span>
-                                <div>
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight group-hover:text-primary transition-colors duration-300 mb-1">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-[10px] md:text-xs font-black uppercase tracking-widest text-muted-foreground">
-                                        {project.subtitle}
-                                    </p>
-                                </div>
-                            </div>
+      {/* Headline row */}
+      <div className="flex items-center gap-5 py-7 sm:gap-8">
+        <span className="font-mono text-sm text-ink-faint">{p.index}</span>
+        <h3 className="flex-1 font-display text-3xl font-medium leading-none tracking-tight text-ink transition-colors group-hover:text-accent-deep sm:text-5xl">
+          {p.title}
+        </h3>
+        <span className="mono-label hidden shrink-0 sm:block">{p.category}</span>
+        <span className="mono-label hidden shrink-0 md:block">{p.year}</span>
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line-strong text-ink transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-paper">
+          <ArrowUpRight size={18} />
+        </span>
+      </div>
 
-                            {/* Right: Description + Tags + Arrow */}
-                            <div className="flex flex-col md:flex-row md:items-center gap-6 md:max-w-[55%]">
-                                <p className="text-muted-foreground font-medium leading-relaxed text-sm flex-1">
-                                    {project.description}
-                                </p>
-                                <div className="flex flex-wrap gap-2 md:max-w-[180px] flex-shrink-0">
-                                    {project.tags.map((tag, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-3 py-1 rounded-full border border-border text-[10px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-colors cursor-default"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                                <div className="h-10 w-10 rounded-full border border-border flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:border-primary group-hover:text-background transition-all duration-300">
-                                    <ArrowUpRight size={18} />
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
+      {/* Expanding detail — open on mobile, hover/focus-reveal on desktop */}
+      <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:group-focus-within:grid-rows-[1fr]">
+        <div className="overflow-hidden">
+          <div className="grid gap-6 pb-9 md:grid-cols-[1.5fr_1fr] md:gap-12">
+            <p className="max-w-xl leading-relaxed text-ink-soft">{p.description}</p>
+            <div>
+              <div className="flex flex-wrap gap-x-8 gap-y-3">
+                {p.metrics.map((m) => (
+                  <div key={m.label}>
+                    <p className="font-display text-2xl font-medium tracking-tight text-ink">
+                      {m.value}
+                    </p>
+                    <p className="mono-label mt-0.5">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+                {p.tags.map((t) => (
+                  <span key={t} className="mono-label text-ink-soft">{t}</span>
+                ))}
+              </div>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function Projects() {
+  return (
+    <Section id="projects" index="04" kicker="Selected Work" note="Index">
+      <Reveal>
+        <p className="display-2 max-w-3xl font-display font-medium leading-[0.98] tracking-[-0.02em] text-ink">
+          Things I&apos;ve actually <span className="serif-em text-accent-deep">shipped</span>.
+        </p>
+        <p className="mt-6 max-w-md text-lg text-ink-soft">
+          Real products, real users, real deadlines — not weekend demos. Hover a
+          row to see what went into each one.
+        </p>
+      </Reveal>
+
+      <div className="mt-14 border-t border-line-strong">
+        {projects.map((p) => (
+          <Row key={p.index} p={p} />
+        ))}
+      </div>
+    </Section>
+  );
 }

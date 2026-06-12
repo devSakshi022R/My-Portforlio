@@ -1,123 +1,137 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" },
+  { num: "01", name: "About", href: "#about" },
+  { num: "02", name: "Experience", href: "#experience" },
+  { num: "03", name: "Work", href: "#projects" },
+  { num: "04", name: "Skills", href: "#skills" },
+  { num: "05", name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
-    const [mounted, setMounted] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
-    useEffect(() => {
-        setMounted(true);
-        const handleScroll = () => setIsScrolled(window.scrollY > 30);
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    if (!mounted) return null;
-
-    return (
-        <header
-            className={cn(
-                "fixed top-0 z-50 w-full transition-all duration-500 flex justify-center",
-                isScrolled ? "mt-4 px-4" : "py-5"
-            )}
-        >
-            <div className={cn(
-                "w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-500",
-                isScrolled ? "glass rounded-full py-2.5 shadow-2xl shadow-black/10 max-w-5xl" : "bg-transparent"
-            )}>
-                {/* Logo */}
-                <a href="#" className="group flex items-center gap-3" aria-label="Sakshi Singh - Home">
-                    <div className="relative h-10 w-10 rounded-xl flex items-center justify-center overflow-hidden transition-transform group-hover:scale-110">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-tertiary animate-pulse" />
-                        <span className="relative text-white font-black text-xl">S</span>
-                    </div>
-                    <div className="hidden sm:block">
-                        <p className="text-sm font-black leading-tight tracking-tight uppercase">Sakshi Singh</p>
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Engineer</p>
-                    </div>
-                </a>
-
-                {/* Desktop Links */}
-                <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="relative group text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground px-4 py-2 transition-colors"
-                        >
-                            {link.name}
-                            <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                        </a>
-                    ))}
-                </nav>
-
-                {/* Right actions */}
-                <div className="flex items-center gap-3">
-                    <a
-                        href="#contact"
-                        className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-foreground text-background text-xs font-black uppercase tracking-widest rounded-full hover:opacity-90 transition-all hover:scale-105 shadow-xl shadow-black/10"
-                    >
-                        Hire Me
-                        <ArrowRight size={14} />
-                    </a>
-
-                    <button
-                        id="mobile-menu-toggle"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2.5 rounded-full hover:bg-muted transition-colors border border-border"
-                        aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                    >
-                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile menu */}
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: -20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                        className="md:hidden fixed inset-x-4 top-24 z-50 glass rounded-3xl overflow-hidden shadow-2xl"
-                    >
-                        <nav className="flex flex-col p-6 gap-2" aria-label="Mobile navigation">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-lg font-bold text-muted-foreground hover:text-foreground px-4 py-3 rounded-2xl hover:bg-muted/50 transition-all"
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
-                            <a
-                                href="#contact"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="mt-4 flex items-center justify-between px-6 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-2xl"
-                            >
-                                Let&apos;s Connect
-                                <ArrowRight size={20} />
-                            </a>
-                        </nav>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </header>
+  useEffect(() => {
+    const ids = ["about", "experience", "projects", "skills", "contact"];
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" }
     );
-}
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled ? "bg-paper/85 backdrop-blur-md" : "bg-transparent"
+      )}
+    >
+      <div className="mx-auto flex max-w-312 items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+        {/* Wordmark */}
+        <a href="#" className="group flex items-baseline gap-2.5" aria-label="Sakshi Singh — top">
+          <span className="font-display text-lg font-semibold tracking-tight text-ink">
+            Sakshi Singh
+          </span>
+          <span className="mono-label hidden sm:inline">©2026</span>
+        </a>
+
+        {/* Numbered index — desktop */}
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Sections">
+          {navLinks.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.name}
+                href={l.href}
+                aria-current={isActive ? "true" : undefined}
+                className="group flex items-baseline gap-1.5 text-sm"
+              >
+                <span className="font-mono text-[0.65rem] text-ink-faint">{l.num}</span>
+                <span
+                  className={cn(
+                    "link-underline font-medium transition-colors",
+                    isActive ? "text-accent-deep" : "text-ink hover:text-accent-deep"
+                  )}
+                >
+                  {l.name}
+                </span>
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="flex items-center gap-2 md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="m-menu"
+        >
+          <span className="mono-label">{open ? "Close" : "Index"}</span>
+          <span className="flex h-4 w-5 flex-col justify-center gap-1.25">
+            <span className={cn("h-px w-full bg-ink transition-transform", open && "translate-y-0.75 rotate-45")} />
+            <span className={cn("h-px w-full bg-ink transition-transform", open && "-translate-y-0.75 -rotate-45")} />
+          </span>
+        </button>
+      </div>
+      <div className={cn("rule mx-auto max-w-312 transition-opacity", scrolled ? "opacity-100" : "opacity-0")} />
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="m-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-14.25 bg-paper md:hidden"
+          >
+            <nav className="flex flex-col px-5 pt-6" aria-label="Sections">
+              {navLinks.map((l, i) => (
+                <motion.a
+                  key={l.name}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.05 }}
+                  className="flex items-baseline gap-4 border-b border-line py-5"
+                >
+                  <span className="font-mono text-sm text-ink-faint">{l.num}</span>
+                  <span className="font-display text-3xl font-medium tracking-tight text-ink">
+                    {l.name}
+                  </span>
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}

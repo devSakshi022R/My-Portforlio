@@ -1,113 +1,107 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { CheckCircle2, GraduationCap, MapPin, Sparkles } from "lucide-react";
+import { Section, Reveal } from "@/components/ui/Section";
+
+const facts = [
+  { k: "Currently", v: "Frontend Developer, 1Lattice" },
+  { k: "Based in", v: "Gurugram, India" },
+  { k: "Focus", v: "Performance · Design systems · DX" },
+  { k: "Education", v: "B.Tech CS — PSIT (2020–2024)" },
+];
 
 const strengths = [
-    "Performance-First UI Engineering",
-    "Scalable Component Systems",
-    "Advanced State Orchestration",
-    "SEO & Accessibility Specialist",
-    "Data-Driven Dashboards",
-    "Full-Spectrum React Hooks",
+  { t: "Performance-first UI", d: "I sweat the LCP, CLS & INP numbers so your users never have to wait." },
+  { t: "Scalable design systems", d: "Component libraries and tokens that turn 'redo it' into 'reuse it'." },
+  { t: "State orchestration", d: "Predictable data flows with Redux, custom hooks and typed contracts." },
+  { t: "Accessible & SEO-ready", d: "Semantic, WCAG-minded markup that ranks well and works for everyone." },
+];
+
+const offClock = [
+  { k: "Fueled by", v: "Chai, mostly" },
+  { k: "Debugging soundtrack", v: "Lo-fi on loop" },
+  { k: "Can talk for hours about", v: "Render performance" },
+  { k: "Currently learning", v: "Three.js & WebGL" },
 ];
 
 export function About() {
-    return (
-        <section id="about" className="py-32 relative overflow-hidden" aria-label="About section">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+  return (
+    <Section id="about" index="02" kicker="About" note="Profile">
+      {/* Big editorial statement */}
+      <Reveal>
+        <p className="display-2 max-w-4xl font-display font-medium leading-[0.98] tracking-[-0.02em] text-ink">
+          I engineer interfaces that are{" "}
+          <span className="serif-em text-accent-deep">fast by design</span> — and
+          a little <span className="serif-em">obsessive</span> about it.
+        </p>
+      </Reveal>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-24 items-start">
-                    {/* Left Side: Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-12"
-                        >
-                            <Sparkles size={12} />
-                            The Architect
-                        </motion.div>
+      <div className="mt-16 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
+        {/* Narrative */}
+        <Reveal delay={0.05}>
+          <div className="max-w-xl space-y-6 text-lg leading-relaxed text-ink-soft">
+            <p>
+              I&apos;m a frontend engineer who cares less about pixel-perfect
+              mockups and more about the moment a page snaps into view before the
+              user even blinks. Good UI should feel <span className="text-ink">effortless</span> —
+              which usually means a lot of un-glamorous work happened underneath.
+            </p>
+            <p>
+              These days I&apos;m doing that at{" "}
+              <span className="text-ink underline decoration-accent decoration-1 underline-offset-4">
+                1Lattice
+              </span>
+              , translating tangled business logic into interfaces people barely
+              notice — because the best ones get out of the way and just work.
+            </p>
+          </div>
+        </Reveal>
 
-                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
-                            Design <br />
-                            <span className="text-muted-foreground">Driven by</span> <br />
-                            Performance
-                        </h2>
+        {/* Facts list */}
+        <Reveal delay={0.1}>
+          <dl className="divide-y divide-line border-y border-line">
+            {facts.map((f) => (
+              <div key={f.k} className="flex items-baseline justify-between gap-6 py-4">
+                <dt className="mono-label">{f.k}</dt>
+                <dd className="text-right text-sm font-medium text-ink">{f.v}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      </div>
 
-                        <div className="space-y-6 text-lg text-muted-foreground font-medium max-w-xl">
-                            <p>
-                                I&apos;m a <span className="text-foreground font-bold">Frontend Engineer</span> with a passion for building
-                                high-performance, production-grade applications that don&apos;t just look good but scale
-                                flawlessly.
-                            </p>
-                            <p>
-                                Currently scaling interfaces at <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4">1Lattice</span>,
-                                where I bridge the gap between complex
-                                business logic and fluid user experiences.
-                            </p>
-                        </div>
-
-                        {/* Education card */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            className="mt-12 md:mt-16 p-6 md:p-8 glass-card rounded-[2rem] md:rounded-[2.5rem] flex flex-col sm:flex-row items-start sm:items-center gap-6 group border-border/50 max-w-md"
-                        >
-                            <div className="h-14 w-14 md:h-16 md:w-16 rounded-2xl bg-foreground text-background flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl flex-shrink-0">
-                                <GraduationCap size={32} />
-                            </div>
-                            <div className="flex-1">
-                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">Education</p>
-                                <h4 className="text-base font-bold uppercase tracking-tight mb-1">B.Tech Computer Science</h4>
-                                <p className="text-xs font-medium text-muted-foreground mb-3">Pranveer Singh Institute of Technology</p>
-                                <div className="flex flex-wrap items-center gap-2 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">
-                                    <span className="px-2 py-1 rounded-md bg-muted/50 border border-border text-muted-foreground">2020 — 2024</span>
-                                    <span className="px-2 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary">7.8 CGPA</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Right Side: Strengths Grid */}
-                    <div className="relative">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                        >
-                            {strengths.map((strength, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="p-6 md:p-8 glass-card rounded-[2rem] border-primary/5 hover:border-primary/20 flex flex-col justify-between"
-                                >
-                                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 flex-shrink-0">
-                                        <CheckCircle2 size={24} />
-                                    </div>
-                                    <h3 className="text-xs font-bold uppercase tracking-widest leading-relaxed">
-                                        {strength}
-                                    </h3>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-
-                        {/* Decorative Background Blob */}
-                        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/10 blur-[100px] rounded-full -z-10 pointer-events-none" />
-                    </div>
-                </div>
+      {/* Strengths — numbered editorial list */}
+      <div className="mt-20 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
+        {strengths.map((s, i) => (
+          <Reveal key={s.t} delay={i * 0.05} className="bg-paper">
+            <div className="group h-full p-7 transition-colors hover:bg-paper-2">
+              <span className="font-mono text-sm text-accent-deep">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
+                {s.t}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.d}</p>
             </div>
-        </section>
-    );
-}
+          </Reveal>
+        ))}
+      </div>
 
+      {/* Off the clock — a little personality */}
+      <Reveal delay={0.05}>
+        <div className="mt-20">
+          <p className="mono-label text-accent-deep">Off the clock</p>
+          <dl className="mt-6 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {offClock.map((f) => (
+              <div key={f.k} className="bg-paper p-6 transition-colors hover:bg-paper-2">
+                <dt className="mono-label">{f.k}</dt>
+                <dd className="mt-2 font-display text-lg font-medium tracking-tight text-ink">
+                  {f.v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Reveal>
+    </Section>
+  );
+}

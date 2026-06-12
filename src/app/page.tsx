@@ -5,18 +5,22 @@ import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Contact, Footer } from "@/components/sections/Contact";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col">
+    <>
+      <ScrollProgress />
       <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
+      <main id="main" className="relative flex min-h-screen flex-col">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

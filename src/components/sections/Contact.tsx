@@ -1,139 +1,144 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, Linkedin, MapPin, Phone, Github, ArrowRight, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Section, Reveal } from "@/components/ui/Section";
 
-const contactItems = [
-    {
-        icon: Mail,
-        label: "Direct Email",
-        value: "sakshi915128@gmail.com",
-        href: "mailto:sakshi915128@gmail.com",
-        color: "text-primary",
-    },
-    {
-        icon: Phone,
-        label: "Contact No.",
-        value: "+91-8303786753",
-        href: "tel:+918303786753",
-        color: "text-secondary",
-    },
-    {
-        icon: Linkedin,
-        label: "LinkedIn Professional",
-        value: "in/sakshi-singh-frontend",
-        href: "https://linkedin.com/in/sakshi-singh-frontend",
-        color: "text-tertiary",
-    },
-    {
-        icon: Github,
-        label: "GitHub Profile",
-        value: "devSakshi022R",
-        href: "https://github.com/devSakshi022R",
-        color: "text-foreground",
-    },
+/** Live clock in Sakshi's timezone — a small "there's a real human here" touch. */
+function LocalTime() {
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }).format(new Date())
+      );
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="mono-label tabular-nums text-ink-soft">
+      {time ? `${time} in Gurugram` : " "}
+    </span>
+  );
+}
+
+const channels = [
+  { label: "Email", value: "sakshi915128@gmail.com", href: "mailto:sakshi915128@gmail.com" },
+  { label: "Phone", value: "+91 83037 86753", href: "tel:+918303786753" },
+  { label: "LinkedIn", value: "in/sakshi-singh-frontend", href: "https://linkedin.com/in/sakshi-singh-frontend" },
+  { label: "GitHub", value: "devSakshi022R", href: "https://github.com/devSakshi022R" },
 ];
 
 export function Contact() {
-    return (
-        <section id="contact" className="py-32 relative overflow-hidden" aria-label="Contact section">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="glass-card rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 lg:p-20 relative overflow-hidden">
-                    {/* Background Accents */}
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+  return (
+    <Section id="contact" index="06" kicker="Contact" note="Let's talk">
+      <Reveal>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <p className="mono-label flex items-center gap-2 text-accent-deep">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Available for new work
+          </p>
+          <span className="hidden text-ink-faint sm:inline">·</span>
+          <LocalTime />
+        </div>
+        <h2 className="display-1 mt-6 font-display font-semibold leading-[0.86] tracking-[-0.03em] text-ink">
+          Let&apos;s build
+          <br />
+          something <span className="serif-em text-accent-deep">remarkable</span>.
+        </h2>
+      </Reveal>
 
-                    <div className="relative z-10 grid lg:grid-cols-2 gap-20">
-                        {/* Left Side: Call to Action */}
-                        <div>
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-8"
-                            >
-                                Get in Touch
-                            </motion.div>
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter uppercase mb-10 leading-[0.85]">
-                                Let&apos;s build <br />
-                                <span className="text-muted-foreground italic font-medium">remarkable</span> <br />
-                                Products
-                            </h2>
-                            <p className="text-muted-foreground font-medium text-lg leading-relaxed max-w-sm">
-                                I&apos;m currently open to new opportunities and interesting projects.
-                                Let&apos;s turn your ideas into high-performance code.
-                            </p>
-                        </div>
+      <div className="mt-14 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
+        <Reveal>
+          <p className="max-w-md text-lg leading-relaxed text-ink-soft">
+            Got something you&apos;re building — or just an idea that won&apos;t
+            leave you alone? Send it my way. I read every message and usually
+            reply within a day (often before my chai goes cold).
+          </p>
+          <a
+            href="mailto:sakshi915128@gmail.com"
+            className="mt-8 inline-flex items-baseline gap-3 font-display text-2xl font-medium tracking-tight text-ink sm:text-4xl"
+          >
+            <span className="link-underline">sakshi915128@gmail.com</span>
+            <ArrowUpRight className="shrink-0 text-accent" size={28} />
+          </a>
+        </Reveal>
 
-                        {/* Right Side: Contact List */}
-                        <div className="space-y-6">
-                            {contactItems.map((item, i) => (
-                                <motion.a
-                                    key={i}
-                                    href={item.href}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="flex items-center justify-between p-6 md:p-8 glass rounded-2xl md:rounded-3xl group hover:border-primary/30 transition-all hover:bg-muted/50 hover:-translate-y-1 hover:shadow-lg"
-                                >
-                                    <div className="flex items-center gap-6">
-                                        <div className={`h-14 w-14 rounded-2xl bg-muted/50 flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform`}>
-                                            <item.icon size={26} />
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">{item.label}</p>
-                                            <p className="text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight truncate sm:break-normal">{item.value}</p>
-                                        </div>
-                                    </div>
-                                    <ExternalLink size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                                </motion.a>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+        {/* Channels */}
+        <Reveal delay={0.08}>
+          <dl className="border-t border-line-strong">
+            {channels.map((c) => {
+              const external = c.href.startsWith("http");
+              return (
+                <a
+                  key={c.label}
+                  href={c.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  className="group flex items-baseline justify-between gap-6 border-b border-line py-5"
+                >
+                  <dt className="mono-label">{c.label}</dt>
+                  <dd className="flex items-center gap-2 text-sm font-medium text-ink transition-colors group-hover:text-accent-deep">
+                    {c.value}
+                    <ArrowUpRight size={15} className="text-ink-faint transition-colors group-hover:text-accent" />
+                  </dd>
+                </a>
+              );
+            })}
+          </dl>
+        </Reveal>
+      </div>
+    </Section>
+  );
 }
 
 export function Footer() {
-    return (
-        <footer className="py-20 border-t border-border" aria-label="Footer">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
-                    <div className="flex flex-col items-center md:items-start gap-4">
-                        <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-foreground text-background flex items-center justify-center font-bold text-xl">
-                                S
-                            </div>
-                            <div>
-                                <p className="font-bold uppercase tracking-tight leading-tight">Sakshi Singh</p>
-                                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Engineering Portfolio</p>
-                            </div>
-                        </div>
-                    </div>
+  const links = [
+    { label: "About", href: "#about" },
+    { label: "Work", href: "#projects" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/sakshi-singh-frontend" },
+    { label: "GitHub", href: "https://github.com/devSakshi022R" },
+  ];
 
-                    <div className="flex flex-wrap justify-center gap-10">
-                        {["About", "Projects", "Skills", "LinkedIn", "GitHub"].map((link) => (
-                            <a
-                                key={link}
-                                href={
-                                    link === "LinkedIn" ? "https://linkedin.com/in/sakshi-singh-frontend" :
-                                    link === "GitHub" ? "https://github.com/devSakshi022R" : `#${link.toLowerCase()}`
-                                }
-                                className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors"
-                            >
-                                {link}
-                            </a>
-                        ))}
-                    </div>
+  return (
+    <footer aria-label="Footer" className="mx-auto w-full max-w-312 px-5 pb-12 sm:px-8 lg:px-12">
+      <div className="rule" />
+      <div className="flex flex-col gap-8 pt-8 md:flex-row md:items-end md:justify-between">
+        <div>
+          <a href="#" className="font-display text-2xl font-semibold tracking-tight text-ink">
+            Sakshi Singh<span className="text-accent">.</span>
+          </a>
+          {/* <p className="marginalia mt-3 max-w-xs leading-relaxed">
+            Typeset in Space Grotesk &amp; Instrument Serif. Built with Next.js,
+            React &amp; Tailwind. © {new Date().getFullYear()} — all rights reserved.
+          </p> */}
+        </div>
 
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-center">
-                        © {new Date().getFullYear()} / Design by Sakshi / Built with Precision
-                    </p>
-                </div>
-            </div>
-        </footer>
-    );
+        <nav className="flex flex-wrap gap-x-7 gap-y-2" aria-label="Footer">
+          {links.map((l) => {
+            const external = l.href.startsWith("http");
+            return (
+              <a
+                key={l.label}
+                href={l.href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                className="link-underline text-sm text-ink-soft hover:text-ink"
+              >
+                {l.label}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
+    </footer>
+  );
 }
-
