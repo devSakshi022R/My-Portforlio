@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 /* ============================================================
-   EDITORIAL INK — a light, paper-toned editorial design system.
-   Paper background · ink type · a single vermillion accent.
-   No gradients, glows, grids, neon, or particles by design.
+   MIDNIGHT INK — a deep, dark editorial design system.
+   Near-black background · luminous type · a single vermillion accent,
+   set against an interactive particle constellation.
    ============================================================ */
 @layer theme {
   :root {
-    /* Paper & ink */
-    --paper: #f4f1e9;        /* warm bone background */
-    --paper-2: #ece7da;      /* recessed panel */
-    --paper-3: #e4dece;      /* deeper panel / hover */
-    --ink: #1a1813;          /* near-black text */
-    --ink-soft: #6c6657;     /* muted body text */
-    --ink-faint: #9a9484;    /* captions, metadata */
+    /* Night & light */
+    --paper: #0a0a0f;        /* deep near-black background */
+    --paper-2: #131320;      /* raised panel */
+    --paper-3: #1c1c2c;      /* deeper panel / hover */
+    --ink: #f1eee6;          /* luminous near-white text */
+    --ink-soft: #a7a294;     /* muted body text */
+    --ink-faint: #6b6757;    /* captions, metadata */
 
     /* The one accent */
-    --accent: #db4324;       /* vermillion */
-    --accent-deep: #b5331a;  /* accent for small text on paper (contrast) */
+    --accent: #ff5a36;       /* glowing vermillion */
+    --accent-deep: #ff7a5c;  /* lighter accent for small text on dark (contrast) */
 
     /* Lines */
-    --line: #d8d1c0;
-    --line-strong: #c2b9a3;
+    --line: #24242f;
+    --line-strong: #36364a;
 
     /* Radius — editorial keeps it nearly square */
     --radius: 3px;
@@ -73,10 +73,14 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    /* subtle paper tooth — a faint fibre noise, not a glow */
+    /* deep night base: a faint warm glow up top, a cool pool below,
+       over a barely-there dot grid that the particles drift across */
+    background-color: var(--paper);
     background-image:
+      radial-gradient(ellipse 90% 55% at 50% -10%, rgba(255, 90, 54, 0.10), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 50% 115%, rgba(70, 90, 160, 0.08), transparent 60%),
       radial-gradient(var(--line) 0.5px, transparent 0.5px);
-    background-size: 22px 22px;
+    background-size: 100% 100%, 100% 100%, 24px 24px;
     background-attachment: fixed;
   }
 
