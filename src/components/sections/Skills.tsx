@@ -20,9 +20,8 @@ export function Skills() {
     <Section id="skills" index="05" kicker="Capabilities" note="Toolkit">
       <Reveal>
         <p className="display-2 max-w-3xl font-display font-medium leading-[0.98] tracking-[-0.02em] text-ink">
-          A focused toolkit for{" "}
-          <span className="serif-em text-accent-deep">high-performance</span>{" "}
-          frontend.
+          The tools I reach for{" "}
+          <span className="serif-em text-accent-deep">without thinking</span>.
         </p>
       </Reveal>
 

@@ -132,11 +132,11 @@ export function Projects() {
     <Section id="projects" index="04" kicker="Selected Work" note="Index">
       <Reveal>
         <p className="display-2 max-w-3xl font-display font-medium leading-[0.98] tracking-[-0.02em] text-ink">
-          Projects with <span className="serif-em text-accent-deep">real impact</span>.
+          Things I&apos;ve actually <span className="serif-em text-accent-deep">shipped</span>.
         </p>
         <p className="mt-6 max-w-md text-lg text-ink-soft">
-          Production-grade applications built at scale, with measurable business
-          outcomes. Hover a row to read the case.
+          Real products, real users, real deadlines — not weekend demos. Hover a
+          row to see what went into each one.
         </p>
       </Reveal>
 

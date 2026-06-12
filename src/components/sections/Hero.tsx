@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { RotatingWord } from "@/components/ui/RotatingWord";
+import { burst } from "@/lib/confetti";
 
 const tickerItems = [
   "React",
@@ -55,7 +58,8 @@ export function Hero() {
           animate="show"
           className="mt-12 font-mono text-sm text-ink-soft sm:mt-16"
         >
-          React · Next.js · TypeScript — building for production since 2024.
+          Hi, I&apos;m Sakshi — I make the web feel <span className="text-accent-deep">quick</span>,
+          and I&apos;ve been doing it in production since 2024.
         </motion.p>
 
         {/* Masthead name */}
@@ -68,7 +72,18 @@ export function Hero() {
         >
           Sakshi
           <br />
-          Singh<span className="text-accent">.</span>
+          Singh
+          <button
+            type="button"
+            aria-label="A little celebration"
+            title="go on, click me"
+            onClick={(e) =>
+              burst(e.clientX, e.clientY)
+            }
+            className="text-accent transition-transform hover:scale-125 hover:rotate-12"
+          >
+            .
+          </button>
         </motion.h1>
 
         {/* Lede */}
@@ -80,25 +95,33 @@ export function Hero() {
           className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between"
         >
           <p className="max-w-xl text-pretty text-xl leading-snug text-ink sm:text-2xl">
-            I build <span className="serif-em text-accent-deep">fast, scalable</span> interfaces —
-            turning complex business logic into products people{" "}
-            <span className="serif-em">rely on</span>.
+            I build interfaces that are{" "}
+            <RotatingWord
+              words={["fast", "scalable", "accessible", "hard to break"]}
+              className="serif-em text-accent-deep"
+            />{" "}
+            — turning gnarly business logic into things people actually{" "}
+            <span className="serif-em">enjoy</span> using.
           </p>
 
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <a href="#projects" className="btn-ink group">
-              Selected work
-              <ArrowDownRight size={18} className="transition-transform group-hover:translate-y-0.5" />
-            </a>
-            <a
-              href="/pdf/sakshi_resume_v3.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline group"
-            >
-              Résumé
-              <ArrowUpRight size={18} className="transition-transform group-hover:-translate-y-0.5" />
-            </a>
+            <Magnetic>
+              <a href="#projects" className="btn-ink group">
+                Selected work
+                <ArrowDownRight size={18} className="transition-transform group-hover:translate-y-0.5" />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="/pdf/sakshi_resume_v3.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline group"
+              >
+                Résumé
+                <ArrowUpRight size={18} className="transition-transform group-hover:-translate-y-0.5" />
+              </a>
+            </Magnetic>
           </div>
         </motion.div>
 
@@ -115,10 +138,10 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Available for new work
+            Available — and replying to email
           </span>
           <span className="mono-label hidden items-center gap-1.5 sm:flex">
-            Scroll <ArrowDownRight size={13} />
+            Keep scrolling <ArrowDownRight size={13} />
           </span>
         </motion.div>
       </div>

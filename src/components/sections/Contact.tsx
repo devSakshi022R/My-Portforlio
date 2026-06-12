@@ -1,7 +1,35 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Section, Reveal } from "@/components/ui/Section";
+
+/** Live clock in Sakshi's timezone — a small "there's a real human here" touch. */
+function LocalTime() {
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }).format(new Date())
+      );
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="mono-label tabular-nums text-ink-soft">
+      {time ? `${time} in Gurugram` : " "}
+    </span>
+  );
+}
 
 const channels = [
   { label: "Email", value: "sakshi915128@gmail.com", href: "mailto:sakshi915128@gmail.com" },
@@ -14,9 +42,13 @@ export function Contact() {
   return (
     <Section id="contact" index="06" kicker="Contact" note="Let's talk">
       <Reveal>
-        <p className="mono-label flex items-center gap-2 text-accent-deep">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Available for new work
-        </p>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <p className="mono-label flex items-center gap-2 text-accent-deep">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Available for new work
+          </p>
+          <span className="hidden text-ink-faint sm:inline">·</span>
+          <LocalTime />
+        </div>
         <h2 className="display-1 mt-6 font-display font-semibold leading-[0.86] tracking-[-0.03em] text-ink">
           Let&apos;s build
           <br />
@@ -27,8 +59,9 @@ export function Contact() {
       <div className="mt-14 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
         <Reveal>
           <p className="max-w-md text-lg leading-relaxed text-ink-soft">
-            I&apos;m open to new opportunities and interesting projects. Tell me
-            what you&apos;re building — I usually reply within a day.
+            Got something you&apos;re building — or just an idea that won&apos;t
+            leave you alone? Send it my way. I read every message and usually
+            reply within a day (often before my chai goes cold).
           </p>
           <a
             href="mailto:sakshi915128@gmail.com"
@@ -83,10 +116,10 @@ export function Footer() {
           <a href="#" className="font-display text-2xl font-semibold tracking-tight text-ink">
             Sakshi Singh<span className="text-accent">.</span>
           </a>
-          <p className="marginalia mt-3 max-w-xs leading-relaxed">
+          {/* <p className="marginalia mt-3 max-w-xs leading-relaxed">
             Typeset in Space Grotesk &amp; Instrument Serif. Built with Next.js,
             React &amp; Tailwind. © {new Date().getFullYear()} — all rights reserved.
-          </p>
+          </p> */}
         </div>
 
         <nav className="flex flex-wrap gap-x-7 gap-y-2" aria-label="Footer">
